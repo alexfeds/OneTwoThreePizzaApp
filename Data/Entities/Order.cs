@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OneTwoThreePizzaStore.Data.Entities
+namespace OneTwoThreePizzaApp.Data.Entities
 {
     public class Order
     {

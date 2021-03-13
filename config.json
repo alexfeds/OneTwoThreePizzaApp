@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "PizzaConnectionString": "Server=(localdb)\\ProjectsV13; Database=PizzaStoreDB; Trusted_Connection=True; Integrated Security=true; MultipleActiveResultSets=true"
+  }
+}
