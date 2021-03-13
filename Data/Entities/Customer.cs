@@ -1,9 +1,8 @@
-using OneTwoThreePizzaStore.Data;
-using OneTwoThreePizzaStore.Data.Entities;
+using OneTwoThreePizzaApp.Data.Entities;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace OneTwoThreePizzaStore
+namespace OneTwoThreePizzaApp
 {
     public class Customer 
     {
