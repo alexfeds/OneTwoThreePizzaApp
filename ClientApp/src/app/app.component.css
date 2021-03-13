@@ -1,0 +1,38 @@
+.bd-table-wrapper {
+  margin: 9%;
+  margin-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.table-header.bd-input-wrapper {
+  display: inline-block;
+  padding-right: 2.3em;
+}
+.bd-buttons-wrapper {
+  display: inline;
+}
+
+button.p-button-outlined.p-button.p-component {
+  margin-right: 2em;
+}
+.bd-nav-divider {
+  background: #f7f7f7;
+  border-bottom: 2px solid #e5e5e5;
+  border-top: 2px solid #e5e5e5;
+  font-size: 12px;
+  min-height: 40px;
+  position: relative;
+  z-index: 2;
+}
+.nav-wrapper {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.bd-history-wrapper {
+  text-align: center;
+  margin-top: 1em;
+}

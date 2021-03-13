@@ -1,0 +1,58 @@
+<div class="bd-header">
+  <div class="nav-wrapper">
+    <img class="bd-logo" src="https://www.bd.com/assets/images/logos/bd-header-logo.png" alt="BD Corporation">
+  </div>
+
+</div>
+<div class="bd-nav-divider">
+</div>
+<p-progressBar [style.visibility]="loading ? 'hidden' : 'visible'" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
+
+<div class="bd-table-wrapper">
+  <p-messages></p-messages>
+
+  <p-card>
+    <p-table [value]="messages">
+      <ng-template pTemplate="caption">
+        <div class="table-header bd-input-wrapper">
+          Number of batches
+          <p-inputNumber [(ngModel)]="batchSize" (onInput)="valuechange($event)"></p-inputNumber>
+        </div>
+        <div class="table-header bd-input-wrapper">
+          Number per batch
+          <p-inputNumber [(ngModel)]="numOfMessages"></p-inputNumber>
+        </div>
+        <div class="bd-buttons-wrapper">
+          <button *ngIf="loading" (click)="postMessages()" pButton pRipple type="button" label="Start" class="p-button-outlined"></button>
+          <button *ngIf="!loading"  pButton pRipple type="button" label="Pause" class="p-button-outlined p-button-danger"></button>
+          <button (click)="clearFields()" pButton pRipple type="button" label="Clear" class="p-button-outlined  p-button-secondary"></button>
+        </div>
+        <div class="bd-history-wrapper">
+          <div class="bd-clock-wrapper">
+            <i class="pi pi-clock" style="font-size: 2rem;padding-bottom: 0.2em"></i>
+          </div>
+          <p-selectButton [options]="historyOptions" (onOptionClick)="getMessagesHistoryChanged($event)" [(ngModel)]="valueHistory" optionLabel="label" optionValue="value"></p-selectButton>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id</th>
+          <th>Snapshot Id</th>
+          <th>Batch Number</th>
+          <th>Result</th>
+          <th>Status</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-message>
+        <tr>
+          <td>{{message.id}}</td>
+          <td>{{message.snapShotId}}</td>
+          <td>{{message.batchNumber}}</td>
+          <td>{{message.result}}</td>
+          <td>{{message.status}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>
+
