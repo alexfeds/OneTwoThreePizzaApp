@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OneTwoThreePizzaApp.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,20 @@ namespace OneTwoThreePizzaApp.Controllers
 
         private readonly ILogger<CustomersController> _logger;
 
-        public CustomersController(ILogger<CustomersController> logger)
+        private readonly IPizzaRepository _repository;
+
+        public CustomersController(ILogger<CustomersController> logger, IPizzaRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         [HttpGet]
-        public string Get()
+        public IEnumerable<Customer> Get()
         {
-            return "welldd";
+            var customers = _repository.GetCustomers();
+
+            return customers;
         }
     }
 
