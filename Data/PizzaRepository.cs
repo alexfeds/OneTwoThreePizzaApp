@@ -16,9 +16,34 @@ namespace OneTwoThreePizzaApp.Data
 
         }
 
+        //customer
         public IEnumerable<Customer> GetCustomers()
         {
             return _ctx.Customers;
         }
+
+        public Customer CreateCustomer(Customer customer)
+        {
+            //save results to db
+            _ctx.Customers.Add(customer);
+            _ctx.SaveChanges();
+            return customer;
+        }
+
+
+       //pizza
+        public IEnumerable<Pizza> GetPizzas()
+        {
+            return _ctx.Pizza;
+        }
+
+        public Pizza CreatePizza(Pizza pizza)
+        {
+            //save results to db
+            _ctx.Pizza.Add(pizza);
+            _ctx.SaveChanges();
+            return pizza;
+        }
+
     }
 }

@@ -16,6 +16,7 @@ namespace OneTwoThreePizzaApp.Data
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Order { get; set; }
+        public DbSet<Pizza> Pizza { get; set; }
 
     }
 }

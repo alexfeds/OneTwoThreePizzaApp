@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 //primeng
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
@@ -26,13 +28,36 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
 
+
+//components
+import { PizzaCreateComponent } from './components/pizza/pizza-create/pizza-create.component';
+import { PizzaListComponent } from './components/pizza/pizza-list/pizza-list.component';
+import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { OrderCreateComponent } from './components/order-create/order-create.component';
+import { PizzaPickerComponent } from './components/pizza/pizza-picker/pizza-picker.component';
+import { PizzaComponent } from './components/pizza/pizza.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PizzaCreateComponent,
+    PizzaListComponent,
+    CustomerCreateComponent,
+    CustomerListComponent,
+    OrderListComponent,
+    OrderCreateComponent,
+    PizzaPickerComponent,
+    PizzaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+
+    //primeng
     TableModule,
     InputTextModule,
     ButtonModule,
@@ -51,7 +76,7 @@ import { APP_BASE_HREF } from '@angular/common';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpClientModule, { provide: APP_BASE_HREF, useValue: "http://localhost:4500/MyApp" }],
+  providers: [HttpClientModule, { provide: APP_BASE_HREF, useValue: "http://localhost:4200" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
