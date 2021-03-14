@@ -14,6 +14,7 @@ export class PizzaListComponent implements OnInit {
   pizzas: Pizza[];
 
   ngOnInit(): void {
+    this.getPizzas();
   }
 
   getPizzas() {

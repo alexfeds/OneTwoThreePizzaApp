@@ -22,6 +22,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -34,10 +35,11 @@ import { PizzaCreateComponent } from './components/pizza/pizza-create/pizza-crea
 import { PizzaListComponent } from './components/pizza/pizza-list/pizza-list.component';
 import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
-import { OrderListComponent } from './components/order-list/order-list.component';
-import { OrderCreateComponent } from './components/order-create/order-create.component';
+import { OrderListComponent } from './components/order/order-list/order-list.component';
+import { OrderCreateComponent } from './components/order/order-create/order-create.component';
 import { PizzaPickerComponent } from './components/pizza/pizza-picker/pizza-picker.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { PizzaComponent } from './components/pizza/pizza.component';
     OrderListComponent,
     OrderCreateComponent,
     PizzaPickerComponent,
-    PizzaComponent
+    PizzaComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { PizzaComponent } from './components/pizza/pizza.component';
     ConfirmDialogModule,
     ToolbarModule,
     SelectButtonModule,
+    DropdownModule,
 
     BrowserAnimationsModule,
     FormsModule,
