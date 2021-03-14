@@ -33,6 +33,8 @@ namespace OneTwoThreePizzaApp
             services.AddCors();
 
             services.AddControllers();
+
+            services.AddScoped<IPizzaRepository, PizzaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

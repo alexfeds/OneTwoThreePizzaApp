@@ -9,39 +9,33 @@ using System.Threading.Tasks;
 
 namespace OneTwoThreePizzaApp.Controllers
 {
-    [Route("api/customers")]
+    [Route("api/pizza")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class PizzasController : ControllerBase
     {
-     
 
-        private readonly ILogger<CustomersController> _logger;
+        private readonly ILogger<PizzasController> _logger;
 
         private readonly IPizzaRepository _repository;
 
-        public CustomersController(ILogger<CustomersController> logger, IPizzaRepository repository)
+        public PizzasController(ILogger<PizzasController> logger, IPizzaRepository repository)
         {
             _logger = logger;
             _repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Customer> Get()
+        public IEnumerable<Pizza> Get()
         {
-            var customers = _repository.GetCustomers();
+            var pizzas = _repository.GetPizzas();
 
-            return customers;
+            return pizzas;
         }
-
-
 
         [HttpPost]
-        public Customer Post([FromBody] Customer customer)
+        public Pizza Post([FromBody] Pizza pizza)
         {
-           
-
-            return _repository.CreateCustomer(customer);
+            return _repository.CreatePizza(pizza);
         }
     }
-
 }

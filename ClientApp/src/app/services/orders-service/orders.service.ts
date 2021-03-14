@@ -7,7 +7,7 @@ import { APP_BASE_HREF } from '@angular/common';
 
 
 @Injectable()
-export class ReportsService {
+export class OrdersService {
 
   constructor(private http: HttpClient, @Inject(APP_BASE_HREF) private baseHref: string) { }
 

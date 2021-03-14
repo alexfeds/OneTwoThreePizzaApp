@@ -15,8 +15,8 @@ namespace OneTwoThreePizzaApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("OneTwoThreePizzaApp.Customer", b =>
@@ -65,16 +65,31 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.ToTable("Order");
                 });
 
+            modelBuilder.Entity("OneTwoThreePizzaApp.Pizza", b =>
+                {
+                    b.Property<Guid>("pizzaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("pizzaID");
+
+                    b.ToTable("Pizza");
+                });
+
             modelBuilder.Entity("OneTwoThreePizzaApp.Customer", b =>
                 {
                     b.HasOne("OneTwoThreePizzaApp.Data.Entities.Order", null)
                         .WithMany("Customers")
                         .HasForeignKey("OrderNumber");
-                });
-
-            modelBuilder.Entity("OneTwoThreePizzaApp.Data.Entities.Order", b =>
-                {
-                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,29 @@
+
+<form [formGroup]="pizzaForm" (ngSubmit)="submitForm()">
+
+  <div class="card">
+    <h5>Pizza Create</h5>
+    <div class="p-fluid">
+      <div class="p-field p-grid">
+        <label for="firstname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Name</label>
+        <div class="p-col-12 p-md-10">
+          <input [formControlName]="'name'" type="text" pInputText>
+        </div>
+      </div>
+      <div class="p-field p-grid">
+        <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Description</label>
+        <div class="p-col-12 p-md-10">
+          <input [formControlName]="'description'" type="text" pInputText>
+        </div>
+      </div>
+      <div class="p-field p-grid">
+        <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Price</label>
+        <div class="p-col-12 p-md-10">
+          <p-inputNumber [formControlName]="'price'" mode="decimal"></p-inputNumber>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
