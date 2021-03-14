@@ -24,6 +24,8 @@ export class PizzaPickerComponent implements OnInit {
   pizzasOptions: PizzaSelection[];
   selectedPizza: PizzaSelection;
 
+  pizzaType: Pizza;
+
   ngOnInit(): void {
     this.setPizzasOptions();
   }
@@ -40,6 +42,23 @@ export class PizzaPickerComponent implements OnInit {
         };
       });
     })
+  }
+
+  getPizzaById(id: string) {
+    this.pizzaService.getPizzaById(id).subscribe(data => {
+      this.pizzaType = data;
+      console.log("pizza type by id", this.pizzaType)
+    })
+
+  }
+
+
+  onDropChange(event: any) {
+    if (event) {
+      console.log("value", event.value.id)
+      this.getPizzaById(event.value.id);
+    }
+
   }
 
 }
