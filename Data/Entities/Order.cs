@@ -15,7 +15,7 @@ namespace OneTwoThreePizzaApp.Data.Entities
 
         public DateTime Date { get; set; }
 
-        public ICollection<Customer> Customers { get; set; }
+        public Customer Customer { get; set; }
 
     }
 }

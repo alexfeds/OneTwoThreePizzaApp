@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OneTwoThreePizzaApp.Data;
+using OneTwoThreePizzaStore.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,17 +27,15 @@ namespace OneTwoThreePizzaApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Customer> Get()
+        public IEnumerable<CustomerViewModel> Get()
         {
             var customers = _repository.GetCustomers();
 
             return customers;
         }
 
-
-
         [HttpPost]
-        public Customer Post([FromBody] Customer customer)
+        public CustomerViewModel Post([FromBody] CustomerViewModel customer)
         {
            
 

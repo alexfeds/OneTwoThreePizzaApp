@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OneTwoThreePizzaApp.Data;
+using OneTwoThreePizzaStore.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +26,14 @@ namespace OneTwoThreePizzaApp.Controllers
         }
 
         [HttpGet("all")]
-        public IEnumerable<Pizza> Get()
+        public IEnumerable<PizzaViewModel> Get()
         {
             var pizzas = _repository.GetPizzas();
 
             return pizzas;
         }
 
-        public Pizza GetPizzaById(Guid pizzaId)
+        public PizzaViewModel GetPizzaById(Guid pizzaId)
         { 
             var pizza = _repository.GetPizzaById(pizzaId);
 
@@ -40,7 +41,7 @@ namespace OneTwoThreePizzaApp.Controllers
         }
 
         [HttpPost]
-        public Pizza Post([FromBody] Pizza pizza)
+        public PizzaViewModel Post([FromBody] PizzaViewModel  pizza)
         {
             return _repository.CreatePizza(pizza);
         }
