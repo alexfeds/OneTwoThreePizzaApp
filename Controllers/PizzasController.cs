@@ -24,12 +24,19 @@ namespace OneTwoThreePizzaApp.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public IEnumerable<Pizza> Get()
         {
             var pizzas = _repository.GetPizzas();
 
             return pizzas;
+        }
+
+        public Pizza GetPizzaById(Guid pizzaId)
+        { 
+            var pizza = _repository.GetPizzaById(pizzaId);
+
+            return pizza;
         }
 
         [HttpPost]

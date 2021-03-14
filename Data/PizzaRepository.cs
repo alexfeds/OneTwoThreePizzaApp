@@ -37,6 +37,12 @@ namespace OneTwoThreePizzaApp.Data
             return _ctx.Pizza;
         }
 
+        public Pizza GetPizzaById(Guid pizzaId)
+        {
+            return _ctx.Pizza.First(pizza => pizza.pizzaID == pizzaId);
+
+        }
+
         public Pizza CreatePizza(Pizza pizza)
         {
             //save results to db

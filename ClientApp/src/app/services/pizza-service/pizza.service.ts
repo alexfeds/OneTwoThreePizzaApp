@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -15,7 +15,7 @@ export class PizzaService {
 
 
   getPizzas(): Observable<Pizza[]> {
-    return this.http.get<Pizza[]>(this.baseUrl + 'pizza');
+    return this.http.get<Pizza[]>(this.baseUrl + 'pizza/all');
   }
 
   createPizza(pizza: Pizza): Observable<Pizza> {
@@ -23,4 +23,12 @@ export class PizzaService {
     console.log("pizza from service", pizza)
     return this.http.post<Pizza>(this.baseUrl + 'pizza', pizza);
   }
+
+  getPizzaById(pizzaId: string) {
+    let params: HttpParams = new HttpParams()
+      .append("pizzaId", pizzaId.toString())
+    console.log("pizza by id params", params) 
+    return this.http.get<Pizza>(this.baseUrl + 'pizza', { params: params });
+  }
+
 }

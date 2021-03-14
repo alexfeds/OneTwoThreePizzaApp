@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace OneTwoThreePizzaApp.Data
 {
@@ -7,6 +8,7 @@ namespace OneTwoThreePizzaApp.Data
         Customer CreateCustomer(Customer customer);
         Pizza CreatePizza(Pizza pizza);
         IEnumerable<Customer> GetCustomers();
+        Pizza GetPizzaById(Guid pizzaId);
         IEnumerable<Pizza> GetPizzas();
     }
 }
