@@ -27,7 +27,7 @@ namespace OneTwoThreePizzaApp.Controllers
         [HttpGet]
         public string Get()
         {
-            return "well";
+            return "welldd";
         }
     }
 
