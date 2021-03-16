@@ -6,7 +6,7 @@ import { PizzaService } from '../../../services/pizza-service/pizza.service';
 @Component({
   selector: 'app-pizza-create',
   templateUrl: './pizza-create.component.html',
-  styleUrls: ['./pizza-create.component.css']
+  styleUrls: ['./pizza-create.component.css', '../../../app.component.css']
 })
 export class PizzaCreateComponent implements OnInit {
 
@@ -14,7 +14,6 @@ export class PizzaCreateComponent implements OnInit {
   pizza: Pizza;
 
   constructor(private readonly fb: FormBuilder, private pizzaService: PizzaService) {
-
 
     this.pizzaForm = this.fb.group({
       name: [],
