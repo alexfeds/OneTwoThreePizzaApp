@@ -14,6 +14,8 @@ namespace OneTwoThreePizzaStore.Data.Models
 
         public DateTime Date { get; set; }
 
-        public ICollection<Customer> Customers { get; set; }
+        public Customer Customer { get; set; }
+
+        public Guid PizzaID { get; set; }
     }
 }

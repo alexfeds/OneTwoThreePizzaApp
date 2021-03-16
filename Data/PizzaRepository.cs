@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using OneTwoThreePizzaApp.Data.Entities;
 using OneTwoThreePizzaStore.Data.Models;
 using System;
@@ -36,7 +37,7 @@ namespace OneTwoThreePizzaApp.Data
                          StreetName = c.StreetName,
                          PhoneNumber = c.PhoneNumber
                      });
-                                            
+
             return customers;
         }
 
@@ -58,7 +59,7 @@ namespace OneTwoThreePizzaApp.Data
         }
 
 
-       //pizza
+        //pizza
         public IEnumerable<PizzaViewModel> GetPizzas()
         {
 
@@ -81,22 +82,19 @@ namespace OneTwoThreePizzaApp.Data
         public PizzaViewModel GetPizzaById(Guid pizzaId)
         {
             var pizzaEntity = _ctx.Pizza.First(pizza => pizza.pizzaID == pizzaId);
-
             var pizza = new PizzaViewModel()
-                   {
-                       pizzaID = pizzaEntity.pizzaID,
-                       Name = pizzaEntity.Name,
-                       Description = pizzaEntity.Description,
-                       Price = pizzaEntity.Price
-                   };
+            {
+                pizzaID = pizzaEntity.pizzaID,
+                Name = pizzaEntity.Name,
+                Description = pizzaEntity.Description,
+                Price = pizzaEntity.Price
+            };
 
             return pizza;
-
         }
 
         public PizzaViewModel CreatePizza(PizzaViewModel pizzaRequest)
         {
-
             var pizzaEntity = new Pizza()
             {
                 pizzaID = pizzaRequest.pizzaID,
@@ -112,36 +110,56 @@ namespace OneTwoThreePizzaApp.Data
         }
 
         //orders
-        public OrderViewModel CreateOrder(OrderViewModel order, CustomerViewModel cust)
+        public OrderViewModel CreateOrder(OrderViewModel order)
         {
-
             try
             {
-                var user = new Customer()
+                var viewModelCusomter = new Customer();
+                viewModelCusomter = order.Customer;
+                Customer user = new Customer()
                 {
-                    FirstName = cust.FirstName,
-                    LastName = cust.LastName,
-                    PhoneNumber = cust.PhoneNumber,
-                    StreetName = cust.StreetName
-
+                    FirstName = viewModelCusomter.FirstName,
+                    LastName = viewModelCusomter.LastName,
+                    PhoneNumber = viewModelCusomter.PhoneNumber,
+                    StreetName = viewModelCusomter.StreetName
 
                 };
                 _ctx.Customers.Add(user);
+
+                Pizza existingPizza = _ctx.Pizza.FirstOrDefault(p => p.pizzaID == order.PizzaID);
                 var myOrder = new Order()
                 {
                     Date = DateTime.Now,
                     Type = "delivery",
                     Customer = user
                 };
-
+                myOrder.Pizza = existingPizza;
                 _ctx.Order.Add(myOrder);
             }
             finally
             {
                 _ctx.SaveChanges();
-            }         
+            }
             return order;
         }
+        public IEnumerable<OrderViewModel> GetOrders()
+        {
+            {
+                IEnumerable<Order> orderEntities = _ctx.Order;
 
+                IEnumerable<OrderViewModel> orders =
+                    orderEntities
+                    .Select(o =>
+                         new OrderViewModel
+                         {
+                             OrderNumber = o.OrderNumber,
+                             Type = o.Type,
+                             Date = o.Date,
+                             Customer = o.Customer
+                         });
+
+                return orders;
+            }
+        }
     }
 }

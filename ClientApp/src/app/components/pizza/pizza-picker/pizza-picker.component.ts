@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Pizza } from '../../../services/pizza-service/pizza';
 import { PizzaService } from '../../../services/pizza-service/pizza.service';
 
 
 interface PizzaSelection {
   name: string;
-  id: number;
+  id: string;
 }
 
 @Component({
@@ -17,9 +18,15 @@ interface PizzaSelection {
 
 export class PizzaPickerComponent implements OnInit {
 
+  @Input() pizzaPickerForm: FormGroup;
 
+  constructor(private pizzaService: PizzaService, private readonly fb: FormBuilder) {
 
-  constructor(private pizzaService: PizzaService) { }
+    this.pizzaPickerForm = this.fb.group({
+      selectedPizza: this.selectedPizza
+    });
+
+  }
 
   pizzasOptions: PizzaSelection[];
   selectedPizza: PizzaSelection;

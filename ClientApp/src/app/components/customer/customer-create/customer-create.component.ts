@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Customer } from '../../services/customers-service/customer';
-import { CustomersService } from '../../services/customers-service/customers.service';
+import { Customer } from '../../../services/customers-service/customer';
+import { CustomersService } from '../../../services/customers-service/customers.service';
 
 @Component({
   selector: 'app-customer-create',

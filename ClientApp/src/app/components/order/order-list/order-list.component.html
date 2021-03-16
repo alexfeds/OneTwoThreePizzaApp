@@ -1,1 +1,32 @@
-<p>order-list works!</p>
+
+<p-card>
+  <p-table [value]="orders">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Order Number</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Pizza ID</th>
+        <th>Quantity</th>
+        <th>Cusomer ID</th>
+        <th>Cusomer Name</th>
+        <th>Cusomer Surname</th>
+        <th>Cusomer Address</th>
+        <th>Phone Number</th>
+        <th>Street Name</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{order.orderNumber}}</td>
+        <td>{{order.type}}</td>
+        <td>{{order.date}}</td>
+        <td>{{order.customer.custID}}</td>
+        <td>{{order.customer.firstName}}</td>
+        <td>{{order.customer.lastName}}</td>
+        <td>{{order.customer.phoneNumber}}</td>
+        <td>{{order.customer.streetName}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
