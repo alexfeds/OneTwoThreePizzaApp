@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OneTwoThreePizzaApp.Data;
 
 namespace OneTwoThreePizzaApp.Migrations
 {
     [DbContext(typeof(PizzaStoreContext))]
-    partial class PizzaStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210314224415_InitialDBOrderHasPizza2")]
+    partial class InitialDBOrderHasPizza2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,14 +60,9 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("pizzaID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("OrderNumber");
 
                     b.HasIndex("CustomerCustID");
-
-                    b.HasIndex("pizzaID");
 
                     b.ToTable("Order");
                 });
@@ -82,10 +79,15 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrderNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.HasKey("pizzaID");
+
+                    b.HasIndex("OrderNumber");
 
                     b.ToTable("Pizza");
                 });
@@ -95,10 +97,13 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.HasOne("OneTwoThreePizzaApp.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerCustID");
+                });
 
-                    b.HasOne("OneTwoThreePizzaApp.Pizza", "Pizza")
-                        .WithMany()
-                        .HasForeignKey("pizzaID");
+            modelBuilder.Entity("OneTwoThreePizzaApp.Pizza", b =>
+                {
+                    b.HasOne("OneTwoThreePizzaApp.Data.Entities.Order", null)
+                        .WithMany("Pizzas")
+                        .HasForeignKey("OrderNumber");
                 });
 #pragma warning restore 612, 618
         }

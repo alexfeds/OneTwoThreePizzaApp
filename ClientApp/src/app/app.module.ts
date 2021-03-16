@@ -33,13 +33,13 @@ import { APP_BASE_HREF } from '@angular/common';
 //components
 import { PizzaCreateComponent } from './components/pizza/pizza-create/pizza-create.component';
 import { PizzaListComponent } from './components/pizza/pizza-list/pizza-list.component';
-import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
-import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { OrderListComponent } from './components/order/order-list/order-list.component';
-import { OrderCreateComponent } from './components/order/order-create/order-create.component';
 import { PizzaPickerComponent } from './components/pizza/pizza-picker/pizza-picker.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { OrderComponent } from './components/order/order.component';
+import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
 
 
 @NgModule({
@@ -50,10 +50,10 @@ import { OrderComponent } from './components/order/order.component';
     CustomerCreateComponent,
     CustomerListComponent,
     OrderListComponent,
-    OrderCreateComponent,
     PizzaPickerComponent,
     PizzaComponent,
-    OrderComponent
+    OrderComponent,
+    CustomerFormComponent
   ],
   imports: [
     BrowserModule,

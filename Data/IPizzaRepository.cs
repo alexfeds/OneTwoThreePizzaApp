@@ -7,8 +7,10 @@ namespace OneTwoThreePizzaApp.Data
     public interface IPizzaRepository
     {
         CustomerViewModel CreateCustomer(CustomerViewModel customer);
+        OrderViewModel CreateOrder(OrderViewModel order);
         PizzaViewModel CreatePizza(PizzaViewModel pizza);
         IEnumerable<CustomerViewModel> GetCustomers();
+        IEnumerable<OrderViewModel> GetOrders();
         PizzaViewModel GetPizzaById(Guid pizzaId);
         IEnumerable<PizzaViewModel> GetPizzas();
     }
