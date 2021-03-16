@@ -6,6 +6,6 @@ export interface Order {
   type: string;
   date?: number;
   customer: Customer;
-  pizzaID: string;
+  pizza: Pizza;
   quantity: number;
 }

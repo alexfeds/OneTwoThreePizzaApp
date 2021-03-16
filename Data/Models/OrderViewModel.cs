@@ -16,6 +16,6 @@ namespace OneTwoThreePizzaStore.Data.Models
 
         public Customer Customer { get; set; }
 
-        public Guid PizzaID { get; set; }
+        public Pizza Pizza { get; set; }
     }
 }
