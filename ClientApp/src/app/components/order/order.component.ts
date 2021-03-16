@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Customer } from '../../services/customers-service/customer';
 import { OrdersService } from '../../services/orders-service/orders.service';
@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit {
 
   customer: Customer;
   order: Order;
+  pizza: Pizza;
 
 
   constructor(private readonly fb: FormBuilder, private ordersSerivce: OrdersService) {
@@ -45,11 +46,15 @@ export class OrderComponent implements OnInit {
 
 
       if (newVal && newVal.selectedPizza) {
+
+ 
+        this.pizza.pizzaID = newVal.selectedPizza.id
+
         this.order = {
           type: "TakeAway",
           customer: this.customer,
           quantity: 2,
-          pizzaID: newVal.selectedPizza.id
+          pizza: this.pizza
         }
       }
 

@@ -126,7 +126,7 @@ namespace OneTwoThreePizzaApp.Data
                 };
                 _ctx.Customers.Add(user);
 
-                Pizza existingPizza = _ctx.Pizza.FirstOrDefault(p => p.pizzaID == order.PizzaID);
+                Pizza existingPizza = _ctx.Pizza.FirstOrDefault(p => p.pizzaID == order.Pizza.pizzaID);
                 var myOrder = new Order()
                 {
                     Date = DateTime.Now,
@@ -145,7 +145,10 @@ namespace OneTwoThreePizzaApp.Data
         public IEnumerable<OrderViewModel> GetOrders()
         {
             {
-                IEnumerable<Order> orderEntities = _ctx.Order;
+                IEnumerable<Order> orderEntities = _ctx.Order
+                                                         .Include(c => c.Customer)
+                                                         .Include(b => b.Pizza)
+                                                         .ToList();
 
                 IEnumerable<OrderViewModel> orders =
                     orderEntities
@@ -155,7 +158,8 @@ namespace OneTwoThreePizzaApp.Data
                              OrderNumber = o.OrderNumber,
                              Type = o.Type,
                              Date = o.Date,
-                             Customer = o.Customer
+                             Customer = o.Customer,
+                             Pizza = o.Pizza
                          });
 
                 return orders;

@@ -7,11 +7,9 @@
         <th>Type</th>
         <th>Date</th>
         <th>Pizza ID</th>
-        <th>Quantity</th>
         <th>Cusomer ID</th>
         <th>Cusomer Name</th>
         <th>Cusomer Surname</th>
-        <th>Cusomer Address</th>
         <th>Phone Number</th>
         <th>Street Name</th>
       </tr>
@@ -21,6 +19,7 @@
         <td>{{order.orderNumber}}</td>
         <td>{{order.type}}</td>
         <td>{{order.date}}</td>
+        <td>{{order?.pizza?.pizzaID}}</td>
         <td>{{order.customer.custID}}</td>
         <td>{{order.customer.firstName}}</td>
         <td>{{order.customer.lastName}}</td>
