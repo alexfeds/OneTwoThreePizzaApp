@@ -1,9 +1,13 @@
-
-<form [formGroup]="pizzaPickerForm">
-  <p-dropdown (onChange)="onDropChange($event)" [formControlName]="'selectedPizza'" [options]="pizzasOptions" [(ngModel)]="selectedPizza" optionLabel="name"></p-dropdown>
-
-  <ng-container *ngIf="pizzaType">
-    <div>Descrption: {{pizzaType.description}}</div>
-    <div>Price: {{pizzaType.price}}</div>
-  </ng-container>
+<p-card>
+  <form class="p-p-4" [formGroup]="pizzaPickerForm">
+    <h4>Choose pizza</h4>
+    <p-dropdown (onChange)="onDropChange($event)" [formControlName]="'selectedPizza'" [options]="pizzasOptions" [(ngModel)]="selectedPizza" optionLabel="name"></p-dropdown>
+    <div class="pizza-desc-wrapper">
+      <ng-container *ngIf="pizzaType">
+        <div>Name: {{pizzaType.name}}</div>
+        <div>Descrption: {{pizzaType.description}}</div>
+        <div>Price: {{pizzaType.price}}</div>
+      </ng-container>
+    </div>
   </form>
+</p-card>

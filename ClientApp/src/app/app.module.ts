@@ -23,6 +23,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -75,6 +76,7 @@ import { CustomerFormComponent } from './components/customer/customer-form/custo
     ToolbarModule,
     SelectButtonModule,
     DropdownModule,
+    TabMenuModule,
 
     BrowserAnimationsModule,
     FormsModule,

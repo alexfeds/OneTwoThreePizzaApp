@@ -1,5 +1,3 @@
-
-<p-card>
   <p-table [value]="customers">
     <ng-template pTemplate="header">
       <tr>
@@ -12,12 +10,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-customer>
       <tr>
-        <td>{{customer.custID}}</td>
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.lastName}}</td>
-        <td>{{customer.streetName}}</td>
-        <td>{{customer.phoneNumber}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.custID}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.firstName}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.lastName}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.streetName}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.phoneNumber}}</td>
       </tr>
     </ng-template>
   </p-table>
-</p-card>

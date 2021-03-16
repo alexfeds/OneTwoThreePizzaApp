@@ -1,8 +1,16 @@
 
+<div class="p-grid p-jc-center">
+  <div class="p-col-7">
+    <div class="box">
+      <p-tabMenu [model]="menuItems"></p-tabMenu>
+    </div>
+  </div>
+</div>
 
-<h2><a [routerLink]="'/order'">Order</a></h2>
-<h2><a [routerLink]="'/pizza'">Pizzas</a></h2>
-<h2><a [routerLink]="'/customers'">Customers</a></h2>
-<h2><a [routerLink]="'/orders'">Orders</a></h2>
-
-<router-outlet></router-outlet>
+<div class="p-grid p-jc-center">
+  <div class="p-col-7">
+    <p-card>
+      <router-outlet></router-outlet>
+    </p-card>
+    </div>
+</div>

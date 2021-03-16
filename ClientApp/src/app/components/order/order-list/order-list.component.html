@@ -1,6 +1,4 @@
-
-<p-card>
-  <p-table [value]="orders">
+<p-table [value]="orders">
     <ng-template pTemplate="header">
       <tr>
         <th>Order Number</th>
@@ -16,16 +14,15 @@
     </ng-template>
     <ng-template pTemplate="body" let-order>
       <tr>
-        <td>{{order.orderNumber}}</td>
-        <td>{{order.type}}</td>
-        <td>{{order.date}}</td>
-        <td>{{order?.pizza?.pizzaID}}</td>
-        <td>{{order.customer.custID}}</td>
-        <td>{{order.customer.firstName}}</td>
-        <td>{{order.customer.lastName}}</td>
-        <td>{{order.customer.phoneNumber}}</td>
-        <td>{{order.customer.streetName}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.orderNumber}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.type}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.date}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.pizza?.pizzaID}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.custID}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.firstName}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.lastName}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.phoneNumber}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.streetName}}</td>
       </tr>
     </ng-template>
   </p-table>
-</p-card>

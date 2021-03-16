@@ -1,9 +1,4 @@
-
-
-
-
 <form [formGroup]="orderForm">
-
   <div class="p-grid p-jc-center">
     <div class="p-col-7">
       <div class="box">
@@ -16,12 +11,13 @@
   <div class="p-grid p-jc-center">
     <div class="p-col-7">
       <div class="box">
-        <app-customer-form [customerForm]="orderForm"></app-customer-form>
+        <p-card>
+          <app-customer-form [customerForm]="orderForm"></app-customer-form>
+        </p-card>
+       
       </div>
     </div>
   </div>
-
 </form>
-
 
 <button (click)="createOrder()">Order</button>

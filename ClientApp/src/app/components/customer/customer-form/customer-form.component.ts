@@ -5,7 +5,7 @@ import { Customer } from '../../../services/customers-service/customer';
 @Component({
   selector: 'app-customer-form',
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.css']
+  styleUrls: ['./customer-form.component.css', '../../../app.component.css']
 })
 
 export class CustomerFormComponent implements OnInit {
