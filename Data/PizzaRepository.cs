@@ -152,7 +152,12 @@ namespace OneTwoThreePizzaApp.Data
 
         public OrderViewModel GetOrderById(Guid orderId)
         {
-            var orderEnity = _ctx.Order.First(order => order.OrderNumber == orderId);
+            var orderEnity = _ctx.Order
+                                  .Where(o => o.OrderNumber == orderId)
+                                  .Include(o => o.Customer)
+                                  .Include(o => o.Pizza)
+                                  .FirstOrDefault();
+    
             var order = new OrderViewModel()
             {
                 OrderNumber = orderEnity.OrderNumber,
@@ -163,6 +168,32 @@ namespace OneTwoThreePizzaApp.Data
                 Quantity = orderEnity.Quantity
             };
             return order;
+        }
+
+        public OrderViewModel SetOrderStatus(OrderViewModel orderRequest)
+        {
+
+            var order = _ctx.Order
+                              .Where(o => o.OrderNumber == orderRequest.OrderNumber)
+                              .FirstOrDefault();
+            if (order != null)
+            {
+                order.OrderStatus = orderRequest.OrderStatus;
+                _ctx.SaveChanges();
+            }
+
+            var orderView = new OrderViewModel()
+            {
+                OrderNumber = order.OrderNumber,
+                Date = order.Date,
+                Customer = order.Customer,
+                Pizza = order.Pizza,
+                OrderStatus = order.OrderStatus,
+                Quantity = order.Quantity
+            };
+
+            return orderView;
+            
         }
     }
 }

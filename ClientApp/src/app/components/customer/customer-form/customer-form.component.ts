@@ -17,10 +17,12 @@ export class CustomerFormComponent implements OnInit {
 
 
     this.customerForm = this.fb.group({
-      firstName: [],
-      lastName: [],
-      phoneNumber: [],
-      streetName: [],
+      customer: this.fb.group({
+        firstName: [],
+        lastName: [],
+        phoneNumber: [],
+        streetName: [],
+      }),
     });
   }
 

@@ -14,5 +14,6 @@ namespace OneTwoThreePizzaApp.Data
         IEnumerable<OrderViewModel> GetOrders();
         PizzaViewModel GetPizzaById(Guid pizzaId);
         IEnumerable<PizzaViewModel> GetPizzas();
+        OrderViewModel SetOrderStatus(OrderViewModel order);
     }
 }

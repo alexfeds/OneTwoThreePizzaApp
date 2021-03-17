@@ -3,11 +3,11 @@ import { Pizza } from "../pizza-service/pizza";
 
 export interface Order {
   orderNumber?: string;
-  type: string;
   date?: number;
   customer: Customer;
   pizza: Pizza;
   quantity: number;
+  orderStatus: OrderSatus;
 }
 
 export enum OrderSatus {

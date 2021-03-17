@@ -34,14 +34,13 @@ import { APP_BASE_HREF } from '@angular/common';
 //components
 import { PizzaCreateComponent } from './components/pizza/pizza-create/pizza-create.component';
 import { PizzaListComponent } from './components/pizza/pizza-list/pizza-list.component';
-import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { OrderListComponent } from './components/order/order-list/order-list.component';
 import { PizzaPickerComponent } from './components/pizza/pizza-picker/pizza-picker.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { OrderComponent } from './components/order/order.component';
 import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
-import { OrderDisplayComponent } from './components/order/order-display/order-display.component';
+import { OrderDisplayComponent, OrderDisplayResolver } from './components/order/order-display/order-display.component';
 import { OrderStatusPickerComponent } from './shared/order-status-picker/order-status-picker.component';
 
 
@@ -50,7 +49,6 @@ import { OrderStatusPickerComponent } from './shared/order-status-picker/order-s
     AppComponent,
     PizzaCreateComponent,
     PizzaListComponent,
-    CustomerCreateComponent,
     CustomerListComponent,
     OrderListComponent,
     PizzaPickerComponent,
@@ -86,7 +84,9 @@ import { OrderStatusPickerComponent } from './shared/order-status-picker/order-s
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpClientModule, { provide: APP_BASE_HREF, useValue: "http://localhost:4200" }],
+  providers: [HttpClientModule, { provide: APP_BASE_HREF, useValue: "http://localhost:4200" },
+    OrderDisplayResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
