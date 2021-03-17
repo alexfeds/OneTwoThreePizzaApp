@@ -7,13 +7,15 @@ import { OrderListComponent } from './components/order/order-list/order-list.com
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { OrderComponent } from './components/order/order.component';
+import { OrderDisplayComponent } from './components/order/order-display/order-display.component';
 
 
 const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'orders', component: OrderListComponent },
   { path: 'customers', component: CustomerListComponent },
-  { path: 'pizza', component: PizzaComponent }
+  { path: 'pizza', component: PizzaComponent },
+  { path: 'order-display', component: OrderDisplayComponent }
 ];
 
 @NgModule({

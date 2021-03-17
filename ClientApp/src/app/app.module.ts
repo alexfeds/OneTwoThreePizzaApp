@@ -41,6 +41,8 @@ import { PizzaPickerComponent } from './components/pizza/pizza-picker/pizza-pick
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { OrderComponent } from './components/order/order.component';
 import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
+import { OrderDisplayComponent } from './components/order/order-display/order-display.component';
+import { OrderStatusPickerComponent } from './shared/order-status-picker/order-status-picker.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { CustomerFormComponent } from './components/customer/customer-form/custo
     PizzaPickerComponent,
     PizzaComponent,
     OrderComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    OrderDisplayComponent,
+    OrderStatusPickerComponent
   ],
   imports: [
     BrowserModule,
