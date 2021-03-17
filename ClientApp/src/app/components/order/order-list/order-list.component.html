@@ -2,7 +2,9 @@
     <ng-template pTemplate="header">
       <tr>
         <th>Order Number</th>
+        <th>Order Status</th>
         <th>Date</th>
+        <th>Pizza Name</th>
         <th>Pizza ID</th>
         <th>Cusomer ID</th>
         <th>Cusomer Name</th>
@@ -13,9 +15,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-order>
       <tr>
-        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.orderNumber}}</td>
-        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.type}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem"><a [routerLink]="['/order-display', order.orderNumber]">{{order?.orderNumber}}</a></td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.status}}</td>
         <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.date}}</td>
+        <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.pizza?.name}}</td>
         <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.pizza?.pizzaID}}</td>
         <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.custID}}</td>
         <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.firstName}}</td>

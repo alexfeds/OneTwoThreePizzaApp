@@ -10,7 +10,7 @@ namespace OneTwoThreePizzaStore.Data.Models
         public Guid CustID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string StreetName { get; set; }
     }
 }

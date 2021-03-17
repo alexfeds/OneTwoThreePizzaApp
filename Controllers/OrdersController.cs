@@ -43,5 +43,15 @@ namespace OneTwoThreePizzaApp.Controllers
 
             return order;
         }
+
+        [HttpPut("status")]
+        public OrderViewModel PutOrderStatus([FromBody] OrderViewModel model)
+        {
+
+            var orderUpdated = _repository.SetOrderStatus(model);
+
+            return orderUpdated;
+        }
+
     }
 }

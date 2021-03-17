@@ -6,7 +6,7 @@ import { PizzaService } from '../../../services/pizza-service/pizza.service';
 
 interface PizzaSelection {
   name: string;
-  id: string;
+  pizzaID: string;
 }
 
 @Component({
@@ -23,7 +23,7 @@ export class PizzaPickerComponent implements OnInit {
   constructor(private pizzaService: PizzaService, private readonly fb: FormBuilder) {
 
     this.pizzaPickerForm = this.fb.group({
-      selectedPizza: this.selectedPizza
+      pizza: this.selectedPizza
     });
 
   }
@@ -45,9 +45,14 @@ export class PizzaPickerComponent implements OnInit {
       this.pizzasOptions = pizzaData.map(p => {
         return {
           name: p.name,
-          id: p.pizzaID
+          pizzaID: p.pizzaID
         };
       });
+      if (pizzaData.length) {
+        this.selectedPizza = this.pizzasOptions[0];
+      }
+      
+
     })
   }
 
@@ -63,7 +68,7 @@ export class PizzaPickerComponent implements OnInit {
   onDropChange(event: any) {
     if (event) {
       console.log("value", event.value.id)
-      this.getPizzaById(event.value.id);
+      this.getPizzaById(event.value.pizzaID);
     }
 
   }

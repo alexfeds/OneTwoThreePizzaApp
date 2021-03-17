@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
       { label: 'Customers', icon: 'pi pi-fw pi-users', routerLink: ['customers'] },
       { label: 'Orders', icon: 'pi pi-fw pi-list', routerLink: ['orders'] },
       { label: 'Pizza', icon: 'pi pi-fw pi-file', routerLink: ['pizza'] },
-      { label: 'Order', icon: 'pi pi-fw pi-file', routerLink: ['pizza'] }
     ];
   }
 

@@ -27,7 +27,24 @@ export class OrdersService {
     /*    customer.custId = "d6048908-fd20-4a98-abd7-edebaa34bfbb";*/
 
     console.log("order from service", order)
+
+    if (order) {
+      order.customer.phoneNumber = order.customer.phoneNumber.toString();
+    }
     return this.http.post<Order>(this.baseUrl + 'orders', order);
+  }
+
+
+  getOrderId(orderNumber: string) {
+    let params: HttpParams = new HttpParams()
+      .append("orderId", orderNumber.toString())
+    console.log("order by id params", params)
+    return this.http.get<Order>(this.baseUrl + 'orders', { params: params });
+  }
+
+  updateOrderStatus(order: Order) {
+    console.log("order status update object from service", order)
+    return this.http.put<Order>(this.baseUrl + 'orders/status', order);
   }
 
 }

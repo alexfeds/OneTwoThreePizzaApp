@@ -22,11 +22,13 @@ export class OrderComponent implements OnInit {
   constructor(private readonly fb: FormBuilder, private ordersSerivce: OrdersService) {
 
     this.orderForm = this.fb.group({
-      selectedPizza: [],
-      firstName: [],
-      lastName: [],
-      phoneNumber: [],
-      streetName: [],
+      pizza: [],
+      customer: this.fb.group({
+        firstName: [],
+        lastName: [],
+        phoneNumber: [],
+        streetName: [],
+      }),
     });
 
 
@@ -35,32 +37,10 @@ export class OrderComponent implements OnInit {
       console.log("form changes", newVal)
 
       this.order = newVal;
+      this.order = <Order>Object.assign({}, newVal);
 
 
-      this.customer = {
-        firstName: newVal.firstName,
-        lastName: newVal.lastName,
-        phoneNumber: newVal.phoneNumber,
-        streetName: newVal.streetName
-      }
-
-
-      if (newVal && newVal.selectedPizza) {
-
- 
-        this.pizza.pizzaID = newVal.selectedPizza.id
-
-        this.order = {
-          type: "TakeAway",
-          customer: this.customer,
-          quantity: 2,
-          pizza: this.pizza
-        }
-      }
-
-     
-
-      console.log("this.order", this.order)
+      console.log("this.order object assigned", this.order)
     })
 
   }
@@ -73,19 +53,7 @@ export class OrderComponent implements OnInit {
 
   createOrder() {
 
-    //this.order = {
-    //  type: "new",
-    //  pizzaID: "fff",
-    //  customer:  this.customer
-    //}
-
-    //this.order.type = "new";
-    //this.order.pizza = this.pizza;
-    //this.order.customer = this.customer;
-   
-   
-
-
+    console.log("order", this.order)
 
     this.ordersSerivce.createOrder(this.order).subscribe(data => {
       console.log("Order created", data)
