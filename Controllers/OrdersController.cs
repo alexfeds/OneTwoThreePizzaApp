@@ -32,11 +32,16 @@ namespace OneTwoThreePizzaApp.Controllers
             return orders;
         }
 
-
         [HttpPost]
         public OrderViewModel Post([FromBody] OrderViewModel order)
         {
             return _repository.CreateOrder(order);
+        }
+        public OrderViewModel GetOrderById(Guid orderId)
+        {
+            var order = _repository.GetOrderById(orderId);
+
+            return order;
         }
     }
 }

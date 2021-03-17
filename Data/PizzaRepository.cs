@@ -19,11 +19,9 @@ namespace OneTwoThreePizzaApp.Data
             _ctx = ctx;
 
         }
-
         //customer
         public IEnumerable<CustomerViewModel> GetCustomers()
         {
-
             IEnumerable<Customer> customerEntities = _ctx.Customers;
 
             IEnumerable<CustomerViewModel> customers =
@@ -37,13 +35,11 @@ namespace OneTwoThreePizzaApp.Data
                          StreetName = c.StreetName,
                          PhoneNumber = c.PhoneNumber
                      });
-
             return customers;
         }
 
         public CustomerViewModel CreateCustomer(CustomerViewModel customerRequest)
         {
-
             var customer = new Customer()
             {
                 FirstName = customerRequest.FirstName,
@@ -51,20 +47,16 @@ namespace OneTwoThreePizzaApp.Data
                 StreetName = customerRequest.StreetName,
                 PhoneNumber = customerRequest.PhoneNumber
             };
-
             //save results to db
             _ctx.Customers.Add(customer);
             _ctx.SaveChanges();
             return customerRequest;
         }
 
-
         //pizza
         public IEnumerable<PizzaViewModel> GetPizzas()
         {
-
             IEnumerable<Pizza> pizzaEntities = _ctx.Pizza;
-
             IEnumerable<PizzaViewModel> pizzas =
                 pizzaEntities
                 .Select(p =>
@@ -75,7 +67,6 @@ namespace OneTwoThreePizzaApp.Data
                          Description = p.Description,
                          Price = p.Price,
                      });
-
             return pizzas;
         }
 
@@ -89,7 +80,6 @@ namespace OneTwoThreePizzaApp.Data
                 Description = pizzaEntity.Description,
                 Price = pizzaEntity.Price
             };
-
             return pizza;
         }
 
@@ -102,7 +92,6 @@ namespace OneTwoThreePizzaApp.Data
                 Description = pizzaRequest.Description,
                 Price = pizzaRequest.Price
             };
-
             //save results to db
             _ctx.Pizza.Add(pizzaEntity);
             _ctx.SaveChanges();
@@ -122,7 +111,6 @@ namespace OneTwoThreePizzaApp.Data
                     LastName = viewModelCusomter.LastName,
                     PhoneNumber = viewModelCusomter.PhoneNumber,
                     StreetName = viewModelCusomter.StreetName
-
                 };
                 _ctx.Customers.Add(user);
 
@@ -130,7 +118,6 @@ namespace OneTwoThreePizzaApp.Data
                 var myOrder = new Order()
                 {
                     Date = DateTime.Now,
-                    Type = "delivery",
                     Customer = user
                 };
                 myOrder.Pizza = existingPizza;
@@ -149,21 +136,33 @@ namespace OneTwoThreePizzaApp.Data
                                                          .Include(c => c.Customer)
                                                          .Include(b => b.Pizza)
                                                          .ToList();
-
                 IEnumerable<OrderViewModel> orders =
                     orderEntities
                     .Select(o =>
                          new OrderViewModel
                          {
                              OrderNumber = o.OrderNumber,
-                             Type = o.Type,
                              Date = o.Date,
                              Customer = o.Customer,
                              Pizza = o.Pizza
                          });
-
                 return orders;
             }
+        }
+
+        public OrderViewModel GetOrderById(Guid orderId)
+        {
+            var orderEnity = _ctx.Order.First(order => order.OrderNumber == orderId);
+            var order = new OrderViewModel()
+            {
+                OrderNumber = orderEnity.OrderNumber,
+                Date = orderEnity.Date,
+                Customer = orderEnity.Customer,
+                Pizza = orderEnity.Pizza,
+                OrderStatus = orderEnity.OrderStatus,
+                Quantity = orderEnity.Quantity
+            };
+            return order;
         }
     }
 }

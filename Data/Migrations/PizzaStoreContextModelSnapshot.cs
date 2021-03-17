@@ -44,10 +44,9 @@ namespace OneTwoThreePizzaApp.Migrations
 
             modelBuilder.Entity("OneTwoThreePizzaApp.Data.Entities.Order", b =>
                 {
-                    b.Property<int>("OrderNumber")
+                    b.Property<Guid>("OrderNumber")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CustomerCustID")
                         .HasColumnType("uniqueidentifier");
@@ -55,8 +54,11 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("pizzaID")
                         .HasColumnType("uniqueidentifier");

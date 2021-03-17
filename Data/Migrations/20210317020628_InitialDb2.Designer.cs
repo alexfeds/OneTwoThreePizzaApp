@@ -10,8 +10,8 @@ using OneTwoThreePizzaApp.Data;
 namespace OneTwoThreePizzaApp.Migrations
 {
     [DbContext(typeof(PizzaStoreContext))]
-    [Migration("20210314224415_InitialDBOrderHasPizza2")]
-    partial class InitialDBOrderHasPizza2
+    [Migration("20210317020628_InitialDb2")]
+    partial class InitialDb2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,10 +46,9 @@ namespace OneTwoThreePizzaApp.Migrations
 
             modelBuilder.Entity("OneTwoThreePizzaApp.Data.Entities.Order", b =>
                 {
-                    b.Property<int>("OrderNumber")
+                    b.Property<Guid>("OrderNumber")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CustomerCustID")
                         .HasColumnType("uniqueidentifier");
@@ -57,12 +56,20 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("pizzaID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("OrderNumber");
 
                     b.HasIndex("CustomerCustID");
+
+                    b.HasIndex("pizzaID");
 
                     b.ToTable("Order");
                 });
@@ -79,15 +86,10 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderNumber")
-                        .HasColumnType("int");
-
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.HasKey("pizzaID");
-
-                    b.HasIndex("OrderNumber");
 
                     b.ToTable("Pizza");
                 });
@@ -97,13 +99,10 @@ namespace OneTwoThreePizzaApp.Migrations
                     b.HasOne("OneTwoThreePizzaApp.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerCustID");
-                });
 
-            modelBuilder.Entity("OneTwoThreePizzaApp.Pizza", b =>
-                {
-                    b.HasOne("OneTwoThreePizzaApp.Data.Entities.Order", null)
-                        .WithMany("Pizzas")
-                        .HasForeignKey("OrderNumber");
+                    b.HasOne("OneTwoThreePizzaApp.Pizza", "Pizza")
+                        .WithMany()
+                        .HasForeignKey("pizzaID");
                 });
 #pragma warning restore 612, 618
         }
