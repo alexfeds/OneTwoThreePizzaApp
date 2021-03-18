@@ -1,5 +1,5 @@
-<p-card>
-  <form class="p-p-4" [formGroup]="pizzaPickerForm">
+
+  <form [formGroup]="pizzaPickerForm">
     <h4>Choose pizza</h4>
     <p-dropdown (onChange)="onDropChange($event)" [formControlName]="'pizza'" [options]="pizzasOptions" [(ngModel)]="selectedPizza" optionLabel="name"></p-dropdown>
     <div class="pizza-desc-wrapper">
@@ -10,4 +10,4 @@
       </ng-container>
     </div>
   </form>
-</p-card>
+

@@ -10,7 +10,7 @@ import { Customer } from './services/customers-service/customer';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [CustomersService]
+  providers: [CustomersService, MessageService]
 })
 
 
@@ -23,10 +23,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = [
-      { label: 'Order', icon: 'pi pi-fw pi-pencil', routerLink: ['order'] },
+      { label: 'New Order', icon: 'pi pi-fw pi-pencil', routerLink: ['order'] },
       { label: 'Customers', icon: 'pi pi-fw pi-users', routerLink: ['customers'] },
       { label: 'Orders', icon: 'pi pi-fw pi-list', routerLink: ['orders'] },
-      { label: 'Pizza', icon: 'pi pi-fw pi-file', routerLink: ['pizza'] },
+      { label: 'New Pizza', icon: 'pi pi-fw pi-file', routerLink: ['pizza'] },
     ];
   }
 
