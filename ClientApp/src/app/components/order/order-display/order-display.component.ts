@@ -1,7 +1,9 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Order, OrderSatus } from '../../../services/orders-service/order';
 import { OrdersService } from '../../../services/orders-service/orders.service';
+import { OrderStatusPipe } from '../../../shared/pipes/delivery-status.pipe';
 
 
 interface OrderStatusOptions {
@@ -24,14 +26,14 @@ export class OrderDisplayComponent implements OnInit {
 
   selectedOrderStatus: OrderStatusOptions;
 
-  constructor(private orderService: OrdersService, private activatedRoute: ActivatedRoute) {
+  constructor(private orderService: OrdersService, private activatedRoute: ActivatedRoute, private pipe: OrderStatusPipe, private notificationService: MessageService) {
 
     this.OrderStatusOptions = [
       { name: "Registered", code: OrderSatus.Registered },
       { name: "Preparation", code: OrderSatus.Preparation },
       { name: "ReadyToDeliver", code: OrderSatus.ReadyToDeliver },
       { name: "Delivered", code: OrderSatus.Delivered },
-     
+
     ];
     this.selectedOrderStatus = this.OrderStatusOptions[0];
   }
@@ -41,6 +43,12 @@ export class OrderDisplayComponent implements OnInit {
 
       this.order = data.data;
       console.log("this.order", this.order)
+
+      //set order status from current order
+      if (this.order.orderStatus) {
+        this.selectedOrderStatus.name = this.pipe.transform(this.order.orderStatus);
+      }
+
     })
   }
 
@@ -54,7 +62,17 @@ export class OrderDisplayComponent implements OnInit {
 
     this.orderService.updateOrderStatus(order).subscribe(order => {
       console.log("updated order status", order)
-    })
+      this.notificationService.clear();
+      this.notificationService.add({ severity: 'success', summary: `Order: ${this.order.orderNumber} updated status to ${this.selectedOrderStatus.name}` });
+      setTimeout(() => {
+        this.notificationService.clear();
+      }, 6000);
+    }, error => {
+      this.notificationService.add({ severity: 'error', summary: `Error, try again` });
+      setTimeout(() => {
+        this.notificationService.clear();
+      }, 6000);
+    });
   }
 }
 

@@ -1,5 +1,6 @@
+<p-messages [closable]="false"></p-messages>
 <form [formGroup]="orderForm">
-  <div class="p-grid p-jc-center">
+  <div class="p-grid p-jc-start">
     <div class="p-col-7">
       <div class="box">
         <app-pizza-picker [pizzaPickerForm]="orderForm">
@@ -8,13 +9,12 @@
     </div>
   </div>
 
-  <div class="p-grid p-jc-center">
+  <div class="pp-grid p-jc-start">
     <div class="p-col-7">
       <div class="box">
-        <p-card>
+  
           <app-customer-form [customerForm]="orderForm"></app-customer-form>
-        </p-card>
-       
+      
       </div>
     </div>
   </div>

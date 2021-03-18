@@ -1,30 +1,31 @@
  <form [formGroup]="customerForm">
-    <div class="card"  formGroupName="customer">
-      <div class="p-fluid p-p-5">
-        <div class="p-field p-grid">
-          <label for="firstname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Firstname</label>
-          <div class="p-col-12 p-md-10">
-            <input class="pizza-set-width-input" [formControlName]="'firstName'" type="text" pInputText>
-          </div>
-        </div>
-        <div class="p-field p-grid">
-          <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Lastname</label>
-          <div class="p-col-12 p-md-10">
-            <input class="pizza-set-width-input" [formControlName]="'lastName'" type="text" pInputText>
-          </div>
-        </div>
-        <div class="p-field p-grid">
-          <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Phone Number</label>
-          <div class="p-col-12 p-md-10">
-            <p-inputNumber class="pizza-set-width-input" [formControlName]="'phoneNumber'" mode="decimal"></p-inputNumber>
-          </div>
-        </div>
-        <div class="p-field p-grid">
-          <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Street Name</label>
-          <div class="p-col-12 p-md-10">
-            <input class="pizza-set-width-input" [formControlName]="'streetName'" type="text" pInputText>
-          </div>
-        </div>
-      </div>
-    </div>
+   <div class="card" formGroupName="customer">
+     <h3 class="pizza-heading-main">Make Order</h3>
+     <div class="p-fluid p-p-5">
+       <div class="p-field p-grid">
+         <label for="firstname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Firstname</label>
+         <div class="p-col-12 p-md-10">
+           <input class="p-inputtext-sm" [formControlName]="'firstName'" type="text" pInputText>
+         </div>
+       </div>
+       <div class="p-field p-grid">
+         <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Lastname</label>
+         <div class="p-col-12 p-md-10">
+           <input class="p-inputtext-sm" [formControlName]="'lastName'" type="text" pInputText>
+         </div>
+       </div>
+       <div class="p-field p-grid">
+         <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Phone Number</label>
+         <div class="p-col-12 p-md-10">
+           <p-inputNumber class="p-inputtext-sm" [formControlName]="'phoneNumber'" mode="decimal"></p-inputNumber>
+         </div>
+       </div>
+       <div class="p-field p-grid">
+         <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Street Name</label>
+         <div class="p-col-12 p-md-10">
+           <input class="p-inputtext-sm" [formControlName]="'streetName'" type="text" pInputText>
+         </div>
+       </div>
+     </div>
+   </div>
   </form>

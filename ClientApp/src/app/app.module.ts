@@ -24,12 +24,13 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabMenuModule } from 'primeng/tabmenu';
-
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
-
+//pipes
+import { OrderStatusPipe } from './shared/pipes/delivery-status.pipe';
 
 //components
 import { PizzaCreateComponent } from './components/pizza/pizza-create/pizza-create.component';
@@ -44,6 +45,7 @@ import { OrderDisplayComponent, OrderDisplayResolver } from './components/order/
 import { OrderStatusPickerComponent } from './shared/order-status-picker/order-status-picker.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,9 @@ import { OrderStatusPickerComponent } from './shared/order-status-picker/order-s
     OrderComponent,
     CustomerFormComponent,
     OrderDisplayComponent,
-    OrderStatusPickerComponent
+    OrderStatusPickerComponent,
+    //pipes
+    OrderStatusPipe
   ],
   imports: [
     BrowserModule,
@@ -79,13 +83,17 @@ import { OrderStatusPickerComponent } from './shared/order-status-picker/order-s
     SelectButtonModule,
     DropdownModule,
     TabMenuModule,
+    ScrollPanelModule,
+
+
 
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule
   ],
   providers: [HttpClientModule, { provide: APP_BASE_HREF, useValue: "http://localhost:4200" },
-    OrderDisplayResolver
+    OrderDisplayResolver,
+    OrderStatusPipe
   ],
   bootstrap: [AppComponent]
 })

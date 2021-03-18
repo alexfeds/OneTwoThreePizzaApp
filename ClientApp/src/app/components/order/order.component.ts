@@ -4,11 +4,13 @@ import { Customer } from '../../services/customers-service/customer';
 import { OrdersService } from '../../services/orders-service/orders.service';
 import { Order } from '../../services/orders-service/order';
 import { Pizza } from '../../services/pizza-service/pizza';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrls: ['./order.component.css', '../../app.component.css']
 })
 export class OrderComponent implements OnInit {
 
@@ -19,7 +21,7 @@ export class OrderComponent implements OnInit {
   pizza: Pizza;
 
 
-  constructor(private readonly fb: FormBuilder, private ordersSerivce: OrdersService) {
+  constructor(private readonly fb: FormBuilder, private ordersSerivce: OrdersService, private notificationService: MessageService) {
 
     this.orderForm = this.fb.group({
       pizza: [],
@@ -54,10 +56,22 @@ export class OrderComponent implements OnInit {
   createOrder() {
 
     console.log("order", this.order)
+    this.order.orderStatus = 1;
 
     this.ordersSerivce.createOrder(this.order).subscribe(data => {
       console.log("Order created", data)
-    })
+
+      this.notificationService.clear();
+      this.notificationService.add({ severity: 'success', summary: `Order ${this.order.orderNumber} added` });
+      setTimeout(() => {
+        this.notificationService.clear();
+      }, 6000);
+    }, error => {
+        this.notificationService.add({ severity: 'error', summary: `Error, try again` });
+        setTimeout(() => {
+          this.notificationService.clear();
+        }, 6000);
+    });
 
   }
 

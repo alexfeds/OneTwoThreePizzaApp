@@ -144,6 +144,7 @@ namespace OneTwoThreePizzaApp.Data
                              OrderNumber = o.OrderNumber,
                              Date = o.Date,
                              Customer = o.Customer,
+                             OrderStatus = o.OrderStatus,
                              Pizza = o.Pizza
                          });
                 return orders;
