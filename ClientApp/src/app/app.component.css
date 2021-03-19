@@ -12,7 +12,7 @@ h3.pizza-heading-main {
 }
 
 .pizza-action-btns-wrapper {
-  margin-top: 22%;
+text-align: center;
 }
 input.pizza-set-width-input.p-inputnumber-input.p-inputtext.p-component {
   width: 180px;
@@ -21,4 +21,28 @@ input.pizza-set-width-input.p-inputnumber-input.p-inputtext.p-component {
 
 .tab-wrapper.p-col-7 {
   padding-bottom: 3em;
+}
+
+.tab-wrapper.p-col-12 {
+  padding: 0;
+}
+
+:host>>> ul.p-tabmenu-nav.p-reset {
+  padding-top: 1em;
+}
+
+.heading-nav-text {
+  font-size: 21px;
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.heading-main-divider {
+  background-color: #F6F8F7;
+  border-bottom: 1px solid #80808036;
+}
+.logo {
+  POSITION: absolute;
+  right: 50%;
+  top: 0%;
 }

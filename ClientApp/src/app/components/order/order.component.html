@@ -1,23 +1,31 @@
-<p-messages [closable]="false"></p-messages>
+
+
 <form [formGroup]="orderForm">
-  <div class="p-grid p-jc-start">
-    <div class="p-col-7">
-      <div class="box">
-        <app-pizza-picker [pizzaPickerForm]="orderForm">
-        </app-pizza-picker>
+  <div class="p-grid p-jc-center">
+    <div class="p-col-4 p-p-6 picker-wrapper">
+      <p-messages [closable]="false"></p-messages>
+      <app-pizza-picker [pizzaPickerForm]="orderForm">
+      </app-pizza-picker>
+
+    </div>
+  </div>
+
+
+
+
+
+  <div class="p-grid p-jc-center">
+    <div class="p-col-4 p-p-6 form-wrapper">
+      <app-customer-form [customerForm]="orderForm"></app-customer-form>
+      <div class="pizza-action-btns-wrapper">
+        <button (click)="createOrder()" pButton pRipple type="button" styleClass="main-pizza-button" label="Order" class="p-button-outlined"></button>
       </div>
     </div>
   </div>
 
-  <div class="pp-grid p-jc-start">
-    <div class="p-col-7">
-      <div class="box">
-  
-          <app-customer-form [customerForm]="orderForm"></app-customer-form>
-      
-      </div>
-    </div>
-  </div>
+
+
+ 
+
 </form>
-
-<button (click)="createOrder()">Order</button>
+  <!--<button (click)="createOrder()">Order</button>-->
