@@ -66,6 +66,7 @@ import { OrderStatusPickerComponent } from './shared/order-status-picker/order-s
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
 
     //primeng
     TableModule,
@@ -85,10 +86,7 @@ import { OrderStatusPickerComponent } from './shared/order-status-picker/order-s
     TabMenuModule,
     ScrollPanelModule,
 
-
-
     BrowserAnimationsModule,
-    FormsModule,
     HttpClientModule
   ],
   providers: [HttpClientModule, { provide: APP_BASE_HREF, useValue: "http://localhost:4200" },

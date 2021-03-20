@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Table } from 'primeng/table';
 import { Pizza } from '../../../services/pizza-service/pizza';
 import { PizzaService } from '../../../services/pizza-service/pizza.service';
 
 @Component({
   selector: 'app-pizza-list',
   templateUrl: './pizza-list.component.html',
-  styleUrls: ['./pizza-list.component.css']
+  styleUrls: ['./pizza-list.component.css', '../../../app.component.css']
 })
 export class PizzaListComponent implements OnInit {
 
   constructor(private pizzaService: PizzaService) { }
+
+  @ViewChild('dt1') pTableRef: Table;
 
   pizzas: Pizza[];
 
@@ -22,6 +25,12 @@ export class PizzaListComponent implements OnInit {
       this.pizzas = pizzaData;
       console.log("pizzas list", pizzaData);
     })
+  }
+
+  filterGlobal($event: { target: HTMLInputElement; }) {
+    console.log("event", event),
+      console.log("table", this.pTableRef),
+      this.pTableRef.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
   }
 
 }

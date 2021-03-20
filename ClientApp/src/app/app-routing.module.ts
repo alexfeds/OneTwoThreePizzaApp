@@ -7,6 +7,7 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderDisplayComponent, OrderDisplayResolver } from './components/order/order-display/order-display.component';
+import { PizzaListComponent } from './components/pizza/pizza-list/pizza-list.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'orders', component: OrderListComponent },
   { path: 'customers', component: CustomerListComponent },
   { path: 'pizza', component: PizzaComponent },
+  { path: 'pizzas', component: PizzaListComponent },
   { path: 'order-display/:orderNumber', component: OrderDisplayComponent, resolve: { data: OrderDisplayResolver } }
 ];
 

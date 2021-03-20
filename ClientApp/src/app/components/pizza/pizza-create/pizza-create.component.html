@@ -1,48 +1,30 @@
 
 <p-messages [closable]="false"></p-messages>
 <form [formGroup]="pizzaForm" (ngSubmit)="submitForm()">
-
-  <div class="card">
-
-    <div class="p-grid p-jc-left">
-      <div class="p-col-7">
-        <div class="box">
-
-          <!--<h3 class="pizza-heading-main">Add Pizza</h3>-->
-          <div class="p-fluid p-p-5" style="padding-bottom: 0 !important">
-            <div class="p-field p-grid">
-              <label for="firstname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Name</label>
-              <div class="p-col-12 p-md-10">
-                <input class="p-inputtext-sm" [formControlName]="'name'" type="text" pInputText>
-              </div>
-            </div>
-            <div class="p-field p-grid">
-              <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Description</label>
-              <div class="p-col-12 p-md-10">
-                <input class="p-inputtext-sm" [formControlName]="'description'" type="text" pInputText>
-              </div>
-            </div>
-            <div class="p-field p-grid">
-              <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Price</label>
-              <div class="p-col-12 p-md-10">
-                <p-inputNumber class="p-inputtext-sm" [formControlName]="'price'" mode="decimal"></p-inputNumber>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <div class="p-col-4 ">
-        <div class="box">
-          <div class="pizza-action-btns-wrapper">
-            <button pButton pRipple type="submit" label="Add" class="p-button-outlined"></button>
-          </div>
-        </div>
-      </div>
+  <div class="p-fluid">
+    <h3 class="table-heading">New pizza</h3>
+    <div class="p-field">
+      <span class="p-float-label">
+        <input class="p-inputtext-sm" [formControlName]="'name'" type="text" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.name.errors }" pInputText>
+        <label for="float-input">Name</label>
+      </span>
+    </div>
+    <div class="p-field">
+      <span class="p-float-label">
+        <input class="p-inputtext-sm" [formControlName]="'description'" type="text" pInputText>
+        <label for="float-input">Description</label>
+      </span>
+    </div>
+    <div class="p-field">
+      <span class="p-float-label">
+        <p-inputNumber class="p-inputtext-sm" [formControlName]="'price'" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.price.errors }"></p-inputNumber>
+        <label for="float-input">Price</label>
+      </span>
     </div>
   </div>
 
+  <div class="pizza-action-btns-wrapper">
+    <button pButton pRipple type="submit" styleClass="main-pizza-button" label="Add" class="p-button-outlined"></button>
+  </div>
 </form>
 
