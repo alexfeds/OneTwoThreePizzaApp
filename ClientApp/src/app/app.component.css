@@ -35,6 +35,7 @@ input.pizza-set-width-input.p-inputnumber-input.p-inputtext.p-component {
   font-size: 21px;
   font-weight: 600;
   padding: 0.5em;
+  padding-left: 1em;
 }
 
 .heading-main-divider {
@@ -45,4 +46,9 @@ input.pizza-set-width-input.p-inputnumber-input.p-inputtext.p-component {
   POSITION: absolute;
   right: 50%;
   top: 0%;
+
+}
+
+.table-heading{
+    text-align: center;
 }

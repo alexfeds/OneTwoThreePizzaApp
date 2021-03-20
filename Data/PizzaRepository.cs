@@ -101,6 +101,8 @@ namespace OneTwoThreePizzaApp.Data
         //orders
         public OrderViewModel CreateOrder(OrderViewModel order)
         {
+            Guid savedOrderId;
+            var myOrder = new Order();
             try
             {
                 var viewModelCusomter = new Customer();
@@ -115,18 +117,21 @@ namespace OneTwoThreePizzaApp.Data
                 _ctx.Customers.Add(user);
 
                 Pizza existingPizza = _ctx.Pizza.FirstOrDefault(p => p.pizzaID == order.Pizza.pizzaID);
-                var myOrder = new Order()
+                 myOrder = new Order()
                 {
                     Date = DateTime.Now,
                     Customer = user
                 };
                 myOrder.Pizza = existingPizza;
-                _ctx.Order.Add(myOrder);
+                _ctx.Order.Add(myOrder);     
             }
             finally
             {
                 _ctx.SaveChanges();
+                savedOrderId = myOrder.OrderNumber;
             }
+
+            order.OrderNumber = savedOrderId;
             return order;
         }
         public IEnumerable<OrderViewModel> GetOrders()

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pizza } from '../../../services/pizza-service/pizza';
 import { PizzaService } from '../../../services/pizza-service/pizza.service';
 import { MessageService } from 'primeng/api';
@@ -14,22 +14,45 @@ export class PizzaCreateComponent implements OnInit {
 
   pizzaForm: FormGroup;
   pizza: Pizza;
+  submitted = false;
+
+  // convenience getter for easy access to form fields
+  get f() { return this.pizzaForm.controls; }
 
   constructor(private readonly fb: FormBuilder, private pizzaService: PizzaService, private notificationService: MessageService) {
 
     this.pizzaForm = this.fb.group({
-      name: [],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
       description: [],
-      price: []
+      price: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]],
     });
   }
 
+
   ngOnInit(): void {
+
+  }
+
+  validationErrorMessage() {
+    this.notificationService.add({ severity: 'error', summary: `Fill in missed fields` });
+    setTimeout(() => {
+      this.notificationService.clear();
+    }, 6000);
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.pizzaForm.reset();
   }
 
   submitForm() {
-    console.log("Form submit value", this.pizzaForm.getRawValue())
+    this.submitted = true;
 
+    if (this.pizzaForm.invalid) {
+      this.validationErrorMessage();
+      return;
+    }
+    console.log("Form submit value", this.pizzaForm.getRawValue())
     this.pizza = this.pizzaForm.getRawValue();
 
     this.pizzaService.createPizza(this.pizza).subscribe(pizzaData => {
@@ -40,16 +63,16 @@ export class PizzaCreateComponent implements OnInit {
       setTimeout(() => {
         this.notificationService.clear();
       }, 6000);
+
     }, error => {
+
       this.notificationService.add({ severity: 'error', summary: `Error, try again` });
       setTimeout(() => {
         this.notificationService.clear();
       }, 6000);
+
     });
-    
 
   }
-
- 
 
 }

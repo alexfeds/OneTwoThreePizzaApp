@@ -17,23 +17,17 @@ export class OrdersService {
   baseUrl: string = environment.baseUrl;
 
   getOrders(): Observable<Order[]> {
-
     return this.http.get<Order[]>(this.baseUrl + 'orders/all');
-
   }
 
-
   createOrder(order: Order): Observable<Order> {
-    /*    customer.custId = "d6048908-fd20-4a98-abd7-edebaa34bfbb";*/
-
     console.log("order from service", order)
 
-    if (order) {
+    if (order.customer && order.customer.phoneNumber) {
       order.customer.phoneNumber = order.customer.phoneNumber.toString();
     }
     return this.http.post<Order>(this.baseUrl + 'orders', order);
   }
-
 
   getOrderId(orderNumber: string) {
     let params: HttpParams = new HttpParams()

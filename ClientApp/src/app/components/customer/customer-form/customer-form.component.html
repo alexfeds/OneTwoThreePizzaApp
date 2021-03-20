@@ -2,56 +2,27 @@
    <div class="p-fluid"  formGroupName="customer">
      <div class="p-field">
        <span class="p-float-label">
-         <input [formControlName]="'firstName'" type="text" pInputText>
+         <input [formControlName]="'firstName'" type="text"  [ngClass]="{ 'ng-invalid ng-dirty': submitted && customerForm.get('customer.firstName')?.errors }"   pInputText>
          <label for="float-input">Firstname</label>
        </span>
      </div>
      <div class="p-field">
        <span class="p-float-label">
-         <input [formControlName]="'lastName'" type="text" pInputText>
+         <input [formControlName]="'lastName'" type="text" [ngClass]="{ 'ng-invalid ng-dirty': submitted && customerForm.get('customer.lastName')?.errors }"  pInputText>
          <label for="float-input">Lastname</label>
        </span>
      </div>
      <div class="p-field">
        <span class="p-float-label">
-         <p-inputNumber [formControlName]="'phoneNumber'" mode="decimal"></p-inputNumber>
+         <p-inputNumber [formControlName]="'phoneNumber'" mode="decimal"  [ngClass]="{ 'ng-invalid ng-dirty': submitted && customerForm.get('customer.phoneNumber')?.errors }"   [useGrouping]="false"></p-inputNumber>
          <label for="float-input">Phone Number</label>
        </span>
      </div>
      <div class="p-field">
        <span class="p-float-label">
-         <input [formControlName]="'streetName'" type="text" pInputText>
+         <input [formControlName]="'streetName'"  [ngClass]="{ 'ng-invalid ng-dirty': submitted && customerForm.get('customer.streetName')?.errors }"  type="text" pInputText>
          <label for="float-input">Street Name</label>
        </span>
      </div>
    </div>
-  <!--<div class="card" formGroupName="customer">-->
-  <!--<h3 class="pizza-heading-main">Make Order</h3>-->
-  <!--<div class="p-fluid">
-      <div class="p-field p-grid">
-        <label for="firstname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Firstname</label>
-        <div class="p-col-12 p-md-10">
-          <input [formControlName]="'firstName'" type="text" pInputText>
-        </div>
-      </div>
-      <div class="p-field p-grid">
-        <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Lastname</label>
-        <div class="p-col-12 p-md-10">
-          <input [formControlName]="'lastName'" type="text" pInputText>
-        </div>
-      </div>
-      <div class="p-field p-grid">
-        <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Phone Number</label>
-        <div class="p-col-12 p-md-10">
-          <p-inputNumber [formControlName]="'phoneNumber'" mode="decimal"></p-inputNumber>
-        </div>
-      </div>
-      <div class="p-field p-grid">
-        <label for="lastname4" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Street Name</label>
-        <div class="p-col-12 p-md-10">
-          <input [formControlName]="'streetName'" type="text" pInputText>
-        </div>
-      </div>
-    </div>
-  </div>-->
 </form>
