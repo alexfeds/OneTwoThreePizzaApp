@@ -48,19 +48,19 @@ Now you can switch to Angular app and start playing with pizza management app. E
 * A RESTful API, supporting HTTP and JSON and using ASP.NET Core 3.1;
 *  A service layer;
 * The Model/Entity layer that handles all interaction with the database;
-*  Angular 11
-*  ASP.NET Core 3.1
-* PrimeNG 11
-*  Entity Framework Core 3.1
-*  A SQL Server 3.1
+*  Angular 11;
+*  ASP.NET Core 3.1;
+* PrimeNG 11;
+*  Entity Framework Core 3.1;
+*  A SQL Server 3.1;
 
 
 ## Features
-* Create an order
-*  Create pizzas
-* Add customers
-*  Manage orders (status update e.g. Preparation/Delivered)
-*  List: Order, Customers, Pizzas
+* Create an order;
+*  Create pizzas;
+* Add customers;
+*  Manage orders (status update e.g. Preparation/Delivered);
+*  List: Order, Customers, Pizzas;
 
 **Prerequisites:** [.NET Core 3.0](https://dot.net/core) and [Node.js](https://nodejs.org/).
 
