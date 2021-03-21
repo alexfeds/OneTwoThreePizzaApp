@@ -62,6 +62,12 @@ Now you can switch to Angular app and start playing with pizza management app. E
 *  Manage orders (status update e.g. Preparation/Delivered);
 *  List: Order, Customers, Pizzas;
 
+Pizza Express management system. There are several types of pizza, and each type
+has name, description (short description) and a price. A customer can make an order. Every
+order contains an order code, the customer and the ordered pizza (with quantity). Each
+client has name, address (only one string) and phone. Each order has a status (registered,
+preparation, ready to be delivered, delivered).
+
 **Prerequisites:** [.NET Core 3.1](https://dot.net/core) and [Node.js](https://nodejs.org/).
 
 
