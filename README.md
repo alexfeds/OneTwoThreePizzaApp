@@ -51,8 +51,8 @@ Now you can switch to Angular app and start playing with pizza management app. E
 *  Angular 11
 *  ASP.NET Core 3.1
 * PrimeNG 11
-*  Entity Framework Core
-*  A SQL Database
+*  Entity Framework Core 3.1
+*  A SQL Server 3.1
 
 
 ## Features
