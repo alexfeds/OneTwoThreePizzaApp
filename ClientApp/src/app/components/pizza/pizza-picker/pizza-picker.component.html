@@ -6,12 +6,18 @@
     <div class="p-field p-grid">
       <label for="firstname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Choose pizza</label>
       <div class="p-col-12 p-md-10">
-        <p-dropdown (onChange)="onDropChange($event)" [formControlName]="'pizza'" [options]="pizzasOptions" [(ngModel)]="selectedPizza" optionLabel="name"></p-dropdown>
+        <p-dropdown (onChange)="onDropChange($event)" [formControlName]="'pizza'" [(ngModel)]="selectedPizza" [options]="pizzasOptions" optionLabel="name"></p-dropdown>
       </div>
     </div>
+    <div class="p-field">
+      <span class="p-float-label">
+        <p-inputNumber class="p-inputtext-sm" [formControlName]="'quantity'" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.quantity.errors }"></p-inputNumber>
+        <label for="float-input">Quantity</label>
+      </span>
+    </div>
+    <div class="pizza-viewer-box">
+      <p-card *ngIf="pizzaType">
 
-    <div *ngIf="pizzaType" class="p-fluid">
-      <p-card>
         <div class="p-grid p-jc-center">
           <div class="p-col-6 desc-wrapper">
             <div class="p-field p-grid">
@@ -33,41 +39,12 @@
               </div>
             </div>
           </div>
-          </div>
+
+        </div>
       </p-card>
     </div>
-
-
-
-
-    <!--<div class="p-fluid">
-      <p-card>
-        <ng-container *ngIf="pizzaType">
-          <div class="p-grid p-jc-center">
-            <div>Name: {{pizzaType.name}}</div>
-            <div>Descrption: {{pizzaType.description}}</div>
-            <div>Price: {{pizzaType.price}}</div>
-          </div>
-        </ng-container>
-
-      </p-card>
-
-    </div>-->
-
-
   </div>
 
 
-
-
-  <!--<h4>Choose pizza</h4>
-  <p-dropdown (onChange)="onDropChange($event)" [formControlName]="'pizza'" [options]="pizzasOptions" [(ngModel)]="selectedPizza" optionLabel="name"></p-dropdown>
-  <div class="pizza-desc-wrapper">
-    <ng-container *ngIf="pizzaType">
-      <div>Name: {{pizzaType.name}}</div>
-      <div>Descrption: {{pizzaType.description}}</div>
-      <div>Price: {{pizzaType.price}}</div>
-    </ng-container>
-  </div>-->
 </form>
 

@@ -20,7 +20,6 @@ export class CustomerListComponent implements OnInit {
   getCustomers() {
     this.customerService.getCustomers().subscribe(customersData => {
       this.customers = customersData;
-      console.log("customer list", this.customers);
     })
   }
 

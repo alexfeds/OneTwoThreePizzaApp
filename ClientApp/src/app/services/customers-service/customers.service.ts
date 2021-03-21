@@ -14,18 +14,11 @@ export class CustomersService {
 
   baseUrl: string = environment.baseUrl;
 
-
   getCustomers(): Observable<Customer[]> {
-
-    return this.http.get<Customer[]>(this.baseUrl + 'customers');
-    
+    return this.http.get<Customer[]>(this.baseUrl + 'customers'); 
   }
 
-
   createCustomer(customer: Customer): Observable<Customer> {
-/*    customer.custId = "d6048908-fd20-4a98-abd7-edebaa34bfbb";*/
-
-    console.log("cusomer from service", customer)
     return this.http.post<Customer>(this.baseUrl + 'customers', customer);
   }
 

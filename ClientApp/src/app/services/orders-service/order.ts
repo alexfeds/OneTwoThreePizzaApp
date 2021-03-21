@@ -6,8 +6,8 @@ export interface Order {
   date?: number;
   customer: Customer;
   pizza: Pizza;
-  quantity: number;
   orderStatus: OrderSatus;
+  quantity: number;
 }
 
 export enum OrderSatus {

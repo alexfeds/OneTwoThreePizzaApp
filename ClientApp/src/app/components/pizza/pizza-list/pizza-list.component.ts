@@ -12,8 +12,6 @@ export class PizzaListComponent implements OnInit {
 
   constructor(private pizzaService: PizzaService) { }
 
-  @ViewChild('dt1') pTableRef: Table;
-
   pizzas: Pizza[];
 
   ngOnInit(): void {
@@ -23,14 +21,8 @@ export class PizzaListComponent implements OnInit {
   getPizzas() {
     this.pizzaService.getPizzas().subscribe(pizzaData => {
       this.pizzas = pizzaData;
-      console.log("pizzas list", pizzaData);
     })
   }
 
-  filterGlobal($event: { target: HTMLInputElement; }) {
-    console.log("event", event),
-      console.log("table", this.pTableRef),
-      this.pTableRef.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
-  }
 
 }

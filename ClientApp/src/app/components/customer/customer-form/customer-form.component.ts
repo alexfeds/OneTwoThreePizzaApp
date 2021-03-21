@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../../../services/customers-service/customer';
+import { PatternValidatorMatch } from '../../../shared/pizzaUtils';
 
 @Component({
   selector: 'app-customer-form',
@@ -19,14 +20,13 @@ export class CustomerFormComponent implements OnInit {
 
     this.customerForm = this.fb.group({
       customer: this.fb.group({
-        firstName: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
-        lastName: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
+        firstName: ['', [Validators.required, Validators.minLength(2), Validators.pattern(PatternValidatorMatch.NameValidPattern)]],
+        lastName: ['', [Validators.required, Validators.minLength(2), Validators.pattern(PatternValidatorMatch.NameValidPattern)]],
         phoneNumber: [null, Validators.required],
         streetName: ['', Validators.required],
       }),
     });
   }
-
  
   ngOnInit(): void { }
 

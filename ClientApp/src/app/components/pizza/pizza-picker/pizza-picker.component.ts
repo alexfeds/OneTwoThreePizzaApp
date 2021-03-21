@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { Pizza } from '../../../services/pizza-service/pizza';
 import { PizzaService } from '../../../services/pizza-service/pizza.service';
 
@@ -20,10 +21,16 @@ export class PizzaPickerComponent implements OnInit {
 
   @Input() pizzaPickerForm: FormGroup;
 
-  constructor(private pizzaService: PizzaService, private readonly fb: FormBuilder) {
+  // convenience getter for easy access to form fields
+  get f() { return this.pizzaPickerForm.controls; }
+  submitted = false;
 
+  constructor(private pizzaService: PizzaService, private readonly fb: FormBuilder, private notificationService: MessageService) {
+
+    //reactive form
     this.pizzaPickerForm = this.fb.group({
-      pizza: this.selectedPizza
+      pizza: this.selectedPizza,
+      quantity: [null, Validators.required]
     });
 
   }
@@ -48,8 +55,14 @@ export class PizzaPickerComponent implements OnInit {
           pizzaID: p.pizzaID
         };
       });
+
       if (pizzaData.length) {
-        this.selectedPizza = this.pizzasOptions[0];
+        this.selectedPizza = this.pizzasOptions[0]; //sets the pizza in picker
+        this.getPizzaById(this.selectedPizza.pizzaID); //gets pizza for display
+      }
+      //if no pizzas created
+      if (!pizzaData.length) {
+        this.validationErrorMessage();
       }
       
 
@@ -59,7 +72,6 @@ export class PizzaPickerComponent implements OnInit {
   getPizzaById(id: string) {
     this.pizzaService.getPizzaById(id).subscribe(data => {
       this.pizzaType = data;
-      console.log("pizza type by id", this.pizzaType)
     })
 
   }
@@ -67,10 +79,19 @@ export class PizzaPickerComponent implements OnInit {
 
   onDropChange(event: any) {
     if (event) {
-      console.log("value", event.value.id)
       this.getPizzaById(event.value.pizzaID);
     }
 
   }
 
+  validationErrorMessage() {
+    this.notificationService.add({ severity: 'error', summary: `You need to add at leat one pizza` });
+    setTimeout(() => {
+      this.notificationService.clear();
+    }, 6000);
+  }
+
+  submitForm() {
+    this.submitted = true;
+  }
 }

@@ -1,7 +1,7 @@
 <div class="p-p-5">
   <p-card>
     <h3 class="table-heading">Order list</h3>
-      <p-table [value]="orders" [scrollable]="true" scrollHeight="400px" #dt1>
+      <p-table [value]="orders" [scrollable]="true" scrollHeight="380px" #dt1>
         <ng-template pTemplate="caption">
           <div class="p-d-flex">
             <button pButton label="New order" [routerLink]="['/order']" class="p-button-outlined" icon="pi pi-plus"></button>
@@ -17,6 +17,7 @@
             <th>Order Status</th>
             <th>Date</th>
             <th>Pizza Name</th>
+            <th>Quantity</th>
             <th>Pizza ID</th>
             <th>Cusomer ID</th>
             <th>Cusomer Name</th>
@@ -27,16 +28,17 @@
         </ng-template>
         <ng-template pTemplate="body" let-order>
           <tr>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem"><a [routerLink]="['/order-display', order.orderNumber]">{{order?.orderNumber}}</a></td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.orderStatus | status}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.date |  date:'short'}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.pizza?.name}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order?.pizza?.pizzaID}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.custID}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.firstName}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.lastName}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.phoneNumber}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{order.customer.streetName}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width"><a [routerLink]="['/order-display', order.orderNumber]">{{order?.orderNumber}}</a></td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order?.orderStatus | status}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order.date |  date:'short'}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order?.pizza?.name}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order?.quantity}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order?.pizza?.pizzaID}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order.customer.custID}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order.customer.firstName}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order.customer.lastName}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order.customer.phoneNumber}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width">{{order.customer.streetName}}</td>
           </tr>
         </ng-template>
       </p-table>

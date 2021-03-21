@@ -120,7 +120,8 @@ namespace OneTwoThreePizzaApp.Data
                  myOrder = new Order()
                 {
                     Date = DateTime.Now,
-                    Customer = user
+                    Customer = user,
+                    Quantity = order.Quantity
                 };
                 myOrder.Pizza = existingPizza;
                 _ctx.Order.Add(myOrder);     
@@ -150,7 +151,8 @@ namespace OneTwoThreePizzaApp.Data
                              Date = o.Date,
                              Customer = o.Customer,
                              OrderStatus = o.OrderStatus,
-                             Pizza = o.Pizza
+                             Pizza = o.Pizza,
+                             Quantity = o.Quantity
                          });
                 return orders;
             }

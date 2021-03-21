@@ -1,3 +1,11 @@
 button.p-button-outlined.p-button.p-component {
     width: 20em;
 }
+.p-col-4.picker-wrapper {
+  padding: 3em;
+  padding-bottom: 0;
+}
+.p-col-4.form-wrapper {
+  padding: 3em;
+  padding-top: 0.7em;
+}

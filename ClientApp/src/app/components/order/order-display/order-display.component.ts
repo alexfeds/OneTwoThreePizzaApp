@@ -70,10 +70,11 @@ export class OrderDisplayComponent implements OnInit {
   }
 }
 
+//resolver to suscribe when url passes id
 @Injectable()
 export class OrderDisplayResolver implements Resolve<Order>{
   constructor(private orderService: OrdersService) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.orderService.getOrderId(route.params.orderNumber);
+    return this.orderService.getOrderById(route.params.orderNumber);
   }
 }
