@@ -24,7 +24,7 @@ This will install all packages needed for Angular and will start the server at `
 
 #### Server configuration
 * restore nugget packages from within visual studio
-* set your SQL server aatabase  go to config,json and change Server=(localdb)\\ProjectsV13; to your local address
+* set your SQL server database go to config,json and change Server=(localdb)\\ProjectsV13; to your local address
 
 ```json
 {
