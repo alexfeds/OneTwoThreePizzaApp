@@ -66,5 +66,5 @@ This will install set up your database
 
 ## License
 
-Apache 2.0, see [LICENSE](LICENSE).
+Apache 2.0, see [LICENSE](https://github.com/git/git-scm.com/blob/master/MIT-LICENSE.txt).
 
