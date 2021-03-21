@@ -5,12 +5,10 @@ import { Order, OrderSatus } from '../../../services/orders-service/order';
 import { OrdersService } from '../../../services/orders-service/orders.service';
 import { OrderStatusPipe } from '../../../shared/pipes/delivery-status.pipe';
 
-
 interface OrderStatusOptions {
   name: string;
   code: number;
 }
-
 
 @Component({
   selector: 'app-order-display',

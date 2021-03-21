@@ -4,7 +4,6 @@ import { MessageService } from 'primeng/api';
 import { Pizza } from '../../../services/pizza-service/pizza';
 import { PizzaService } from '../../../services/pizza-service/pizza.service';
 
-
 interface PizzaSelection {
   name: string;
   pizzaID: string;
@@ -16,17 +15,14 @@ interface PizzaSelection {
   styleUrls: ['./pizza-picker.component.css']
 })
 
-
 export class PizzaPickerComponent implements OnInit {
 
   @Input() pizzaPickerForm: FormGroup;
-
   // convenience getter for easy access to form fields
   get f() { return this.pizzaPickerForm.controls; }
   submitted = false;
 
   constructor(private pizzaService: PizzaService, private readonly fb: FormBuilder, private notificationService: MessageService) {
-
     //reactive form
     this.pizzaPickerForm = this.fb.group({
       pizza: this.selectedPizza,
@@ -37,7 +33,6 @@ export class PizzaPickerComponent implements OnInit {
 
   pizzasOptions: PizzaSelection[];
   selectedPizza: PizzaSelection;
-
   pizzaType: Pizza;
 
   ngOnInit(): void {
@@ -46,9 +41,7 @@ export class PizzaPickerComponent implements OnInit {
 
   setPizzasOptions() {
     this.pizzaService.getPizzas().subscribe(pizzaData => {
-    
-      console.log("pizzas list", pizzaData);
-
+  
       this.pizzasOptions = pizzaData.map(p => {
         return {
           name: p.name,
@@ -63,8 +56,7 @@ export class PizzaPickerComponent implements OnInit {
       //if no pizzas created
       if (!pizzaData.length) {
         this.validationErrorMessage();
-      }
-      
+      } 
 
     })
   }
@@ -73,15 +65,12 @@ export class PizzaPickerComponent implements OnInit {
     this.pizzaService.getPizzaById(id).subscribe(data => {
       this.pizzaType = data;
     })
-
   }
-
 
   onDropChange(event: any) {
     if (event) {
       this.getPizzaById(event.value.pizzaID);
     }
-
   }
 
   validationErrorMessage() {

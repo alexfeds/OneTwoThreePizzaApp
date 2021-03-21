@@ -29,7 +29,6 @@ export class PizzaCreateComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
 
   }
@@ -56,15 +55,12 @@ export class PizzaCreateComponent implements OnInit {
     this.pizza = this.pizzaForm.getRawValue();
 
     this.pizzaService.createPizza(this.pizza).subscribe(pizzaData => {
-
       this.notificationService.clear();
       this.notificationService.add({ severity: 'success', summary: `Pizza ${this.pizza.name} added` });
       setTimeout(() => {
         this.notificationService.clear();
       }, 6000);
-
     }, error => {
-
       this.notificationService.add({ severity: 'error', summary: `Error, try again` });
       setTimeout(() => {
         this.notificationService.clear();

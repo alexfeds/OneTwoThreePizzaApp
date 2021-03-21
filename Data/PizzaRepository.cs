@@ -11,19 +11,16 @@ namespace OneTwoThreePizzaApp.Data
 {
     public class PizzaRepository : IPizzaRepository
     {
-
         private PizzaStoreContext _ctx;
 
         public PizzaRepository(PizzaStoreContext ctx)
         {
             _ctx = ctx;
-
         }
         //customer
         public IEnumerable<CustomerViewModel> GetCustomers()
         {
             IEnumerable<Customer> customerEntities = _ctx.Customers;
-
             IEnumerable<CustomerViewModel> customers =
                 customerEntities
                 .Select(c =>
@@ -131,7 +128,6 @@ namespace OneTwoThreePizzaApp.Data
                 _ctx.SaveChanges();
                 savedOrderId = myOrder.OrderNumber;
             }
-
             order.OrderNumber = savedOrderId;
             return order;
         }
@@ -180,7 +176,6 @@ namespace OneTwoThreePizzaApp.Data
 
         public OrderViewModel SetOrderStatus(OrderViewModel orderRequest)
         {
-
             var order = _ctx.Order
                               .Where(o => o.OrderNumber == orderRequest.OrderNumber)
                               .FirstOrDefault();
@@ -199,9 +194,7 @@ namespace OneTwoThreePizzaApp.Data
                 OrderStatus = order.OrderStatus,
                 Quantity = order.Quantity
             };
-
-            return orderView;
-            
+            return orderView;         
         }
     }
 }
