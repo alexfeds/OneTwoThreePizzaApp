@@ -1,15 +1,14 @@
 <div class="p-grid p-jc-center">
   <div class="tab-wrapper p-col-12">
     <div class="box">
-      <p-tabMenu [model]="menuItems" [activeItem]="menuItems[0]"></p-tabMenu>
+      <p-tabMenu [model]="menuItems" [activeItem]="menuItem"></p-tabMenu>
       <div class="heading-main-divider">
-        <div class="heading-nav-text">{{urlHeading | titlecase}}</div>
+        <div class="heading-nav-text">{{pagaNameMain | titlecase}}</div>
         <div class="logo">
-          <img style="width: 75%" src="http://localhost:21454/images/pizza_logo.png" />
+          <img class="logo_image" src="http://localhost:21454/images/pizza_logo.svg" />
         </div>
       </div>
     </div>
   </div>
 </div>
-
-      <router-outlet></router-outlet>
+<router-outlet></router-outlet>

@@ -11,6 +11,7 @@ import { PizzaListComponent } from './components/pizza/pizza-list/pizza-list.com
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'pizza', pathMatch: 'full' },
   { path: 'order', component: OrderComponent },
   { path: 'orders', component: OrderListComponent },
   { path: 'customers', component: CustomerListComponent },

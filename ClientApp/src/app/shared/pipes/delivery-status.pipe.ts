@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class OrderStatusPipe implements PipeTransform {
   public transform(statusCode: number): string {
-    console.log("from pipe", statusCode)
     let result: string = "";
 
     if (statusCode) {

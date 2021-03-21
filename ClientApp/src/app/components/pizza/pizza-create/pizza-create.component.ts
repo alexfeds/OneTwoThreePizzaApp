@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pizza } from '../../../services/pizza-service/pizza';
 import { PizzaService } from '../../../services/pizza-service/pizza.service';
 import { MessageService } from 'primeng/api';
+import { PatternValidatorMatch } from '../../../shared/pizzaUtils';
 
 @Component({
   selector: 'app-pizza-create',
@@ -20,11 +21,11 @@ export class PizzaCreateComponent implements OnInit {
   get f() { return this.pizzaForm.controls; }
 
   constructor(private readonly fb: FormBuilder, private pizzaService: PizzaService, private notificationService: MessageService) {
-
+    //rective form
     this.pizzaForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(PatternValidatorMatch.NameValidPattern)]],
       description: [],
-      price: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]],
+      price: [null, [Validators.required]],
     });
   }
 
@@ -52,12 +53,10 @@ export class PizzaCreateComponent implements OnInit {
       this.validationErrorMessage();
       return;
     }
-    console.log("Form submit value", this.pizzaForm.getRawValue())
     this.pizza = this.pizzaForm.getRawValue();
 
     this.pizzaService.createPizza(this.pizza).subscribe(pizzaData => {
 
-      console.log("Created pizza", pizzaData)
       this.notificationService.clear();
       this.notificationService.add({ severity: 'success', summary: `Pizza ${this.pizza.name} added` });
       setTimeout(() => {

@@ -21,7 +21,6 @@ export class OrdersService {
   }
 
   createOrder(order: Order): Observable<Order> {
-    console.log("order from service", order)
 
     if (order.customer && order.customer.phoneNumber) {
       order.customer.phoneNumber = order.customer.phoneNumber.toString();
@@ -29,15 +28,13 @@ export class OrdersService {
     return this.http.post<Order>(this.baseUrl + 'orders', order);
   }
 
-  getOrderId(orderNumber: string) {
+  getOrderById(orderNumber: string) {
     let params: HttpParams = new HttpParams()
       .append("orderId", orderNumber.toString())
-    console.log("order by id params", params)
     return this.http.get<Order>(this.baseUrl + 'orders', { params: params });
   }
 
   updateOrderStatus(order: Order) {
-    console.log("order status update object from service", order)
     return this.http.put<Order>(this.baseUrl + 'orders/status', order);
   }
 

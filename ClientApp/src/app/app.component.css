@@ -27,9 +27,7 @@ input.pizza-set-width-input.p-inputnumber-input.p-inputtext.p-component {
   padding: 0;
 }
 
-:host>>> ul.p-tabmenu-nav.p-reset {
-  padding-top: 1em;
-}
+
 
 .heading-nav-text {
   font-size: 21px;
@@ -43,12 +41,18 @@ input.pizza-set-width-input.p-inputnumber-input.p-inputtext.p-component {
   border-bottom: 1px solid #80808036;
 }
 .logo {
-  POSITION: absolute;
-  right: 50%;
-  top: 0%;
-
+  position: absolute;
+  right: 35%;
+  top: 0.3%;
+}
+.logo_image {
+  width: 18%
 }
 
 .table-heading{
     text-align: center;
+}
+
+.table-width{
+    width: 10rem;
 }

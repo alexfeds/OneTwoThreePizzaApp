@@ -1,15 +1,17 @@
 
-<p-messages [closable]="false"></p-messages>
+<div class="p-grid p-jc-center">
+  <p-messages [closable]="false"></p-messages>
+</div>
 <div class="p-p-5">
-  <p-card>
-    <div class="p-grid p-jc-start">
-      <div class="p-col-7">
+  <div class="p-grid p-jc-start">
+    <div class="p-col-7">
+      <p-card>
         <div class="box">
           <h4>Order Number: {{order.orderNumber}}</h4>
           <div class="p-col-12">
             <div class="p-grid">
 
-              <div class="p-col-3">
+              <div class="p-col-2">
                 <div class="p-grid">
                   <h4>Customer</h4>
                 </div>
@@ -18,7 +20,7 @@
                 </div>
 
               </div>
-              <div class="p-col-3">
+              <div class="p-col-2">
                 <div class="p-grid">
                   <h4>Pizza</h4>
                 </div>
@@ -27,7 +29,16 @@
                 </div>
 
               </div>
-              <div class="p-col-3">
+              <div class="p-col-2">
+                <div class="p-grid">
+                  <h4>Quantity</h4>
+                </div>
+                <div class="p-grid">
+                  <span>{{order?.quantity}}</span>
+                </div>
+
+              </div>
+              <div class="p-col-2">
                 <div class="p-grid">
                   <h4>Date</h4>
                 </div>
@@ -36,23 +47,22 @@
                 </div>
 
               </div>
-              <div class="p-col-3">
+              <div class="p-col-2">
                 <div class="p-grid">
                   <h4>Status</h4>
                 </div>
                 <div class="p-grid">
                   <p-dropdown [options]="OrderStatusOptions" [(ngModel)]="selectedOrderStatus" optionLabel="name"></p-dropdown>
                 </div>
-                <div class="p-grid">
-                  <button (click)="setOrderStatus()" pButton pRipple type="button" label="Update" class="p-button-outlined"></button>
-                </div>
 
               </div>
             </div>
           </div>
         </div>
-      </div>
-
+        <div class="p-grid p-jc-center">
+          <button (click)="setOrderStatus()" pButton pRipple type="button" label="Update" class="p-button-outlined"></button>
+        </div>
+      </p-card>
     </div>
-  </p-card>
+  </div>
 </div>

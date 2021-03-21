@@ -1,7 +1,7 @@
 <div class="p-p-5">
   <p-card>
     <h3 class="table-heading">Customer list</h3>
-      <p-table [value]="customers" [scrollable]="true" scrollHeight="400px" #dt1>
+      <p-table [value]="customers" [scrollable]="true" scrollHeight="380px" #dt1>
         <ng-template pTemplate="caption">
           <div class="p-d-flex">
             <button pButton label="New customer" class="p-button-outlined" icon="pi pi-plus"></button>
@@ -22,11 +22,11 @@
         </ng-template>
         <ng-template pTemplate="body" let-customer>
           <tr>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.custID}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.firstName}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.lastName}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.streetName}}</td>
-            <td class="p-text-nowrap p-text-truncate" style="width: 10rem">{{customer.phoneNumber}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width" style="width: 10rem">{{customer.custID}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width" style="width: 10rem">{{customer.firstName}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width" style="width: 10rem">{{customer.lastName}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width" style="width: 10rem">{{customer.streetName}}</td>
+            <td class="p-text-nowrap p-text-truncate table-width" style="width: 10rem">{{customer.phoneNumber}}</td>
           </tr>
         </ng-template>
       </p-table>
