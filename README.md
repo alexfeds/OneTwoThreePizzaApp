@@ -62,7 +62,7 @@ Now you can switch to Angular app and start playing with pizza management app. E
 *  Manage orders (status update e.g. Preparation/Delivered);
 *  List: Order, Customers, Pizzas;
 
-**Prerequisites:** [.NET Core 3.0](https://dot.net/core) and [Node.js](https://nodejs.org/).
+**Prerequisites:** [.NET Core 3.1](https://dot.net/core) and [Node.js](https://nodejs.org/).
 
 
 ## License
