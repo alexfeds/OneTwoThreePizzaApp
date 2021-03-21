@@ -64,4 +64,7 @@ This will install set up your database
 **Prerequisites:** [.NET Core 3.0](https://dot.net/core) and [Node.js](https://nodejs.org/).
 
 
+## License
+
+Apache 2.0, see [LICENSE](LICENSE).
 
