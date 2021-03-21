@@ -6,14 +6,12 @@ import { CustomersService } from './services/customers-service/customers.service
 import { Customer } from './services/customers-service/customer';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [CustomersService, MessageService]
 })
-
 
 export class AppComponent implements OnInit {
 
@@ -54,7 +52,6 @@ export class AppComponent implements OnInit {
   //sets manually active tab based on route name
   setActiveTabByName(url: string) {
     let pageName = this.prittyfyName(url);
-
     if (pageName == "customers") {
       this.menuItem = this.menuItems[2]
     }

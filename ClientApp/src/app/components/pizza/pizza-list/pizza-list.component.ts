@@ -23,6 +23,4 @@ export class PizzaListComponent implements OnInit {
       this.pizzas = pizzaData;
     })
   }
-
-
 }

@@ -18,7 +18,6 @@ import { PatternValidatorMatch } from '../../shared/pizzaUtils';
 export class OrderComponent implements OnInit {
 
   orderForm: FormGroup;
-
   customer: Customer;
   order: Order;
   pizza: Pizza;
@@ -40,7 +39,6 @@ export class OrderComponent implements OnInit {
       }),
     });
 
-
     //subscribe to changes from other compoennt that use the form
     this.orderForm.valueChanges.subscribe(newVal => {
       this.order = newVal;
@@ -51,7 +49,6 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
   showErrorMissedFields() {
     this.notificationService.add({ severity: 'error', summary: `Fill in missed fields` });
@@ -67,7 +64,6 @@ export class OrderComponent implements OnInit {
 
   submitForm() {
     this.submitted = true;
-
     //call submit in child components so can set submitted to true to do field validation in child components
     this.customerForm.submitForm();
     this.pizzaForm.submitForm();
@@ -76,7 +72,6 @@ export class OrderComponent implements OnInit {
       this.showErrorMissedFields();
       return;
     }
-
     //set order status to registred
     this.order.orderStatus = 1;
 
