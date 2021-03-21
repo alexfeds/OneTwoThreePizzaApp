@@ -40,7 +40,8 @@ OneTwoThreePizzaApp> dotnet ef database update
 OneTwoThreePizzaApp> dotnet ef migartions add InitialDb
 OneTwoThreePizzaApp> dotnet ef database update
 ```
-This will install set up your database
+This will install and set up your database. Now you can set the project as a start up project in visual sudio, press play IIS express button and it should start the asp.core app, if all went fine you should see an empty page [], url `http://localhost:21454/api/customers`.
+Now you can switch to Angular app and start saving some data. Enjoy)
 
 ## Stack
 
